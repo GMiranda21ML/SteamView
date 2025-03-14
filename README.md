@@ -1,1 +1,63 @@
 # SteamView
+
+## 📖 Descrição
+O SteamView é um software feito pelo framework Django, tem como objetivo ajudar jogadores que buscam analisar informações dos jogos da steam, como por exemplo, ver descontos em jogos, os jogos mais vendidos, os mais bem avaliados, requisitos de software, entre outros.
+
+---
+
+## 🧑‍💻 Tecnologias e Ferramentas
+- framework Django: Django é um framework web em Python que permite o desenvolvimento rápido e seguro de aplicações, seguindo o padrão MVT. Ele inclui uma ORM poderosa, autenticação integrada e painel administrativo automático.
+- Figma: Figma é uma ferramenta de design colaborativo baseada na web, usada para criar interfaces, protótipos e designs. Permite trabalho em tempo real, facilitando a colaboração entre equipes.
+- Jira: O Jira é uma ferramenta para gerenciar tarefas e projetos, especialmente em equipes de software, usando metodologias ágeis.
+
+---
+
+<details>
+<summary>🔗 LINKS IMPORTANTES</summary>
+
+<div align="center">
+    <a href="https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiMzUwY2RkYjM1OGNjNDJiNDliZmMzNDkxNWIzMjUzMGUiLCJwIjoiaiJ9">
+        <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
+    </a>
+    <a href="https://docs.google.com/document/d/1S2g1G4RuujxoqrS3X8qtjB-jPXst8eDhbwKny189anE/edit?tab=t.0">
+        <img src="https://img.shields.io/badge/Google%20Docs-4285F4?style=for-the-badge&logo=Google-Docs&logoColor=white" alt="Google Docs">
+    </a>
+    <a href="https://www.figma.com/design/3nPg7kwxtVKxKwypslPQtB/SteamView?node-id=58-582&t=77d8WioUx6bMMnMa-1">
+        <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
+    </a>
+</div>
+
+</details>
+
+---
+
+<details>
+<summary>📝 PRIMEIRA ENTREGA</summary>
+
+O objetivo deste sprint é estabelecer a infraestrutura inicial do sistema, com foco em funcionalidades essenciais para o gerenciamento de usuários. 
+
+Será implementada a análise do ranking de jogos mais jogados, pesquisa específica do jogo desejado para saber mais sobre o mesmo, a comparação do meu hardware com os requisitos mínimos do jogo em questão. 
+
+Também será possível analisar melhores descontos dos jogos, analisar as notas/avaliações dos jogos, analisar detalhes do jogo desejado, analisar lançamentos populares, analisar jogos mais e menos vendidos.
+
+Juntamente com a entrega do layout das histórias criadas pelo Figma e atualização do backlog no Jira.
+
+</details>
+
+---
+
+## 🫂 Integrantes
+| Matricula  | Nome                                  | Email da school    |
+| ---------- | ------------------------------------- | ------------------ |
+| 2024200049 | André Avelino Freitas de Oliveira     | aafo@cesar.school  | 
+| 2024200395 | Augusto Malheiros de Souza            | ams10@cesar.school | 
+| 2024200040 | Caio Mathews de Farias Ferreira       | cmff@cesar.school  | 
+| 2024200327 | Eduardo Albuquerque Alves Barbosa     | eaab@cesar.school  |
+| 2024200393 | Gabriel Miranda Murcabel de Lima      | gmml@cesar.school  |
+| 2024200124 | Ricardo Sérgio de Paula Freitas Filho | rspff@cesar.school |
+
+
+
+
+
+
