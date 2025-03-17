@@ -16,7 +16,7 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
 <summary>🔗 LINKS IMPORTANTES</summary>
 
 <div align="center">
-    <a href="https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiMzUwY2RkYjM1OGNjNDJiNDliZmMzNDkxNWIzMjUzMGUiLCJwIjoiaiJ9">
+    <a href="https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiYmNlNzIxOWY4ZDA3NGFlMjg0MjM0YzQ1N2ZjYTVkOTEiLCJwIjoiaiJ9">
         <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
     </a>
     <a href="https://docs.google.com/document/d/1S2g1G4RuujxoqrS3X8qtjB-jPXst8eDhbwKny189anE/edit?tab=t.0">
@@ -24,6 +24,10 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
     </a>
     <a href="https://www.figma.com/design/3nPg7kwxtVKxKwypslPQtB/SteamView?node-id=58-582&t=77d8WioUx6bMMnMa-1">
         <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
+    </a>
+    <a href="https://www.youtube.com/watch?v=4X-COxfohOs">
+        <img src="https://img.shields.io/badge/ScreenCast-FF0000?style=for-the-badge&logo=youtube&logoColor=white
+" alt="Screencast">
     </a>
 </div>
 
@@ -40,7 +44,16 @@ Será implementada a análise do ranking de jogos mais jogados, pesquisa especí
 
 Também será possível analisar melhores descontos dos jogos, analisar as notas/avaliações dos jogos, analisar detalhes do jogo desejado, analisar lançamentos populares, analisar jogos mais e menos vendidos.
 
-Juntamente com a entrega do layout das histórias criadas pelo Figma e atualização do backlog no Jira.
+Juntamente com a entrega do layout das histórias criadas pelo Figma e atualização do backlog no Jira. Também criamos um Screencast, para apresentar o nosso protótipo de baixa fidelidade feito pelo figma, acesse [clicando aqui](https://www.youtube.com/watch?v=4X-COxfohOs)
+
+Nosso figma contem 8 telas que se resumem a login, cadastro, menu de pesquisa, rankings, promoções, avaliações, mais vendidos e sobre o jogo:
+![figma](img/Figma.png)
+
+O jira ficou com a criação do backlog com atualização da primeira sprint, juntamente com o quadro com as infomações que serão atualizadas no futuro do projeto:
+![Backlog](img/Backlog.png)
+
+![Quadro](img/Quadro.png)
+
 
 </details>
 
