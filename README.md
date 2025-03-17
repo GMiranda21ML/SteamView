@@ -44,7 +44,7 @@ Será implementada a análise do ranking de jogos mais jogados, pesquisa especí
 
 Também será possível analisar melhores descontos dos jogos, analisar as notas/avaliações dos jogos, analisar detalhes do jogo desejado, analisar lançamentos populares, analisar jogos mais e menos vendidos.
 
-Juntamente com a entrega do layout das histórias criadas pelo Figma e atualização do backlog no Jira. Também criamos um Screencast, para apresentar o nosso protótipo de baixa fidelidade feito pelo figma, acesse [clicando aqui](https://www.youtube.com/watch?v=4X-COxfohOs)
+Juntamente com a entrega do layout das histórias criadas pelo Figma e atualização do backlog no Jira. Também criamos um Screencast, para apresentar o nosso protótipo de baixa fidelidade feito pelo figma, acesse [clicando aqui](https://www.youtube.com/watch?v=4X-COxfohOs) e um criamos um docs com as histórias para registrar as mesmas, acesse [clicando aqui](https://docs.google.com/document/d/1S2g1G4RuujxoqrS3X8qtjB-jPXst8eDhbwKny189anE/edit?tab=t.0")
 
 Nosso figma contem 8 telas que se resumem a login, cadastro, menu de pesquisa, rankings, promoções, avaliações, mais vendidos e sobre o jogo:
 ![figma](img/Figma.png)
