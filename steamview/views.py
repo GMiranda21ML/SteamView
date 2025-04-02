@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from bs4 import BeautifulSoup  
+from bs4 import BeautifulSoup
+from .models import Jogos
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
