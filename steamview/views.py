@@ -71,4 +71,4 @@ def paginaJogo(request):
         "gameInfo": gameInfo
     }
 
-    return render(request, "steamview\\paginaJogo.html", context)
+    return render(request, "steamview/paginaJogo.html", context)
