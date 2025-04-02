@@ -25,4 +25,24 @@ def buscarDetalhesDoJogo(game_id):
         return response.json()  
     return None
 
+# Busca o preço do jogo na API da Steam (se disponível).
+def buscarPrecoSteam(game_name):
+    url_all_games = "https://api.steampowered.com/ISteamApps/GetAppList/v2/"
+    response = requests.get(url_all_games)
+    
+    if response.status_code == 200:
+        games = response.json().get("applist", {}).get("apps", [])
+        for game in games:
+            if game_name.lower() in game["name"].lower():
+                app_id = game["appid"]
+                url_price = f"https://store.steampowered.com/api/appdetails?appids={app_id}"
+                response_price = requests.get(url_price)
+                
+                if response_price.status_code == 200:
+                    data = response_price.json()
+                    if data.get(str(app_id), {}).get("success", False):
+                        return data[str(app_id)]["data"].get("price_overview", {}).get("final_formatted", "Preço não disponível")
+    return "Preço não disponível"
+
+
 
