@@ -44,5 +44,32 @@ def buscarPrecoSteam(game_name):
                         return data[str(app_id)]["data"].get("price_overview", {}).get("final_formatted", "Preço não disponível")
     return "Preço não disponível"
 
+# view da paginaJogo
+def paginaJogo(request):
+    game_name = "cyberpunk 2077"
+    game = buscarJogoPorNome(game_name)
 
+    gameInfo = None
+    if game:
+        game_id = game.get("id")
+        game_details = buscarDetalhesDoJogo(game_id)
+        preco = buscarPrecoSteam(game_name)
 
+        if game_details:
+            descricao_html = game_details.get("description", "Descrição não disponível.")
+            descricao_limpa = BeautifulSoup(descricao_html, "html.parser").get_text()
+
+            gameInfo = {
+                "name": game_details.get("name", "N/A"),
+                "description": descricao_limpa,
+                "release_date": game_details.get("released", "Data não disponível"),
+                "rating": game_details.get("rating", "Nota não disponível"),
+                "image_url": game_details.get("background_image", "Imagem não disponível"),
+                "price": preco
+            }
+
+    context = {
+        "gameInfo": gameInfo
+    }
+
+    return render(request, "paginaJogo.html", context)
