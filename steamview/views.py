@@ -46,7 +46,7 @@ def buscarPrecoSteam(game_name):
 
 # view da paginaJogo
 def paginaJogo(request):
-    game_name = "God of War Ragnarök"
+    game_name = "Dark Souls"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
@@ -71,4 +71,4 @@ def paginaJogo(request):
         "gameInfo": gameInfo
     }
 
-    return render(request, "paginaJogo.html", context)
+    return render(request, "steamview\\paginaJogo.html", context)
