@@ -71,15 +71,16 @@ def paginaJogo(request):
             }
 
 
-            jogosBanco = Jogos(
-                name = game_details.get("name", "N/A"),
-                description = descricao_limpa,
-                rating = game_details.get("rating", "Nota não disponível"),
-                image = game_details.get("background_image", "Imagem não disponível"),
-                price =  preco
-            )
+            if not Jogos.objects.filter(name = game_details.get("name", "N/A")).exists():
+                jogosBanco = Jogos(
+                    name = game_details.get("name", "N/A"),
+                    description = descricao_limpa,
+                    rating = game_details.get("rating", "Nota não disponível"),
+                    image = game_details.get("background_image", "Imagem não disponível"),
+                    price =  preco
+                )
 
-            jogosBanco.save()
+                jogosBanco.save()
 
     context = {
         "gameInfo": gameInfo
