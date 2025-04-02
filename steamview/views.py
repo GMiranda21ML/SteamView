@@ -46,7 +46,7 @@ def buscarPrecoSteam(game_name):
 
 # view da paginaJogo
 def paginaJogo(request):
-    game_name = "cyberpunk 2077"
+    game_name = "God of War Ragnarök"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
@@ -62,7 +62,6 @@ def paginaJogo(request):
             gameInfo = {
                 "name": game_details.get("name", "N/A"),
                 "description": descricao_limpa,
-                "release_date": game_details.get("released", "Data não disponível"),
                 "rating": game_details.get("rating", "Nota não disponível"),
                 "image_url": game_details.get("background_image", "Imagem não disponível"),
                 "price": preco
