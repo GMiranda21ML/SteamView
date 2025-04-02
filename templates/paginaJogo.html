@@ -18,18 +18,18 @@
                 <h1>STEAMVIEW</h1>
             </div>
         </header>
-        <main id="about">
+        <main>
             <div class="container">
-                <img class="img" src="{% static "img\rdr2.jpg" %}" alt="rdr2">
-                <div>
-                    <h2>SOBRE A LOJA</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur expedita nostrum iste id laborum, animi, voluptatem veniam, fugit qui pariatur assumenda veritatis dolorem quod alias ut beatae dolores facilis!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem nostrum a enim illo veniam vero laborum sunt debitis odio. Repudiandae odio soluta officia, voluptate ex dolore officiis laudantium deleniti rem?
-                    </p>
-                </div>
+                {% if gameInfo %}
+                    <img class="game-image" src="{{ gameInfo.image_url }}" alt="Capa do Jogo">
+                    <div>
+                        <h2>SOBRE O JOGO - {{ gameInfo.name }}</h2>
+                        <p>{{ gameInfo.description }}</p>
+                        <p><strong>Preço:</strong> {{ gameInfo.price }}</p>
+                    </div>
+                {% else %}
+                    <p>Jogo não encontrado.</p>
+                {% endif %}
             </div>
         </main>
         <footer>

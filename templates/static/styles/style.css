@@ -7,7 +7,6 @@
 header,
 main h2 {
     font-family: "Bungee", cursive;
-      
 }
 
 html, body {
@@ -17,9 +16,7 @@ html, body {
     flex-direction: column;
 }
 
-body, 
-input, 
-textarea, p {
+body, input, textarea, p {
     font-family: "Roboto", sans-serif;
 }
 
@@ -33,17 +30,6 @@ header h1 {
     font-weight: bold; /*normal*/
 }
 
-header nav li {
-    display: inline;
-    margin-left: 16px;
-    font-size: 18px;
-}
-
-header nav li a {
-    text-decoration: none;
-    color: #ecf0f1;
-}
-
 .container {
     max-width: 1280px;
     width: 100%;
@@ -51,43 +37,42 @@ header nav li a {
     font-size: 20px;
 }
 
-header .container,
-footer .container {
+header .container, footer .container {
     justify-items: center;
-}
-
-main .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-main .container {
-    align-items: flex-start;
 }
 
 main {
     padding: 24px 0;
     flex: 1;
+    background-color: #000000;
+    color: #ecf0f1;
 }
 
 main h2 {
     margin-bottom: 16px;
 }
 
-main {
-    background-color: #000000;
-    color: #ecf0f1;
-}
-
 main p {
     margin-bottom: 8px;
 }
 
-.img {
-    width: 500px;
-    height: 500px;
-    margin-right: 32px;
+.game-image {
+    width: 100%; 
+    max-width: 600px;
+    height: auto;  
+    margin-right: 20px; 
+    margin-bottom: 20px; 
+}
+
+main .container {
+    display: flex;
+    align-items: flex-start;  
+    justify-content: space-between;
+    gap: 40px; 
+}
+
+main .container .game-info {
+        max-width: 60%;  
 }
 
 p {
