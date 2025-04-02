@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
 from .models import Jogos
 import requests
@@ -46,8 +47,9 @@ def buscarPrecoSteam(game_name):
     return "Preço não disponível"
 
 # view da paginaJogo
+@csrf_exempt
 def paginaJogo(request):
-    game_name = "Dark Souls"
+    game_name = "god of war ragnarok"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
@@ -67,6 +69,17 @@ def paginaJogo(request):
                 "image_url": game_details.get("background_image", "Imagem não disponível"),
                 "price": preco
             }
+
+
+            jogosBanco = Jogos(
+                name = game_details.get("name", "N/A"),
+                description = descricao_limpa,
+                rating = game_details.get("rating", "Nota não disponível"),
+                image = game_details.get("background_image", "Imagem não disponível"),
+                price =  preco
+            )
+
+            jogosBanco.save()
 
     context = {
         "gameInfo": gameInfo
