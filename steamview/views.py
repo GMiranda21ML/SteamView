@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib import messages
 from bs4 import BeautifulSoup
 from .models import Jogos
 import requests
@@ -49,6 +52,10 @@ def buscarPrecoSteam(game_name):
 # view da paginaJogo
 @csrf_exempt
 def paginaJogo(request):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+
     game_name = "elden ring"
     game = buscarJogoPorNome(game_name)
 
