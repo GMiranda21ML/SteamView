@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -43,3 +43,7 @@ def cadastro(request):
             return redirect("login") 
            
     return render(request, "usuarios/cadastro.html")
+
+def logoutView(request):
+    logout(request)
+    return redirect("login")
