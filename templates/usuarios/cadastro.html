@@ -1,0 +1,38 @@
+{% extends "shared/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<main class="login">
+    <div class="container">
+        <h2>Cadastro</h2>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+
+            <label for="password1">Senha:</label>
+            <input type="password" id="password1" name="password1" required autocomplete="new-password">
+            
+            <label for="password2">Confirme a Senha:</label>
+            <input type="password" id="password2" name="password2" required autocomplete="new-password">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
+    </div>
+</main>
+{% endblock %}
