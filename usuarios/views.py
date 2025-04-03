@@ -4,6 +4,9 @@ from django.contrib import messages
 
 # Create your views here.
 
+def loginView(request):
+    return render(request, "usuarios/login.html")
+
 def cadastro(request):    
     if request.method == "POST":
         username = request.POST["username"]
