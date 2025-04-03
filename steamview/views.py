@@ -49,7 +49,7 @@ def buscarPrecoSteam(game_name):
 # view da paginaJogo
 @csrf_exempt
 def paginaJogo(request):
-    game_name = "god of war ragnarok"
+    game_name = "elden ring"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
@@ -87,3 +87,7 @@ def paginaJogo(request):
     }
 
     return render(request, "steamview/paginaJogo.html", context)
+
+
+def searchBar(request):
+    return render(request, "steamview/searchbar.html")
