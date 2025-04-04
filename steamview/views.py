@@ -133,7 +133,6 @@ def paginaJogo(request, nome):
                 "price": preco
             }
 
-
             if not Jogos.objects.filter(name = game_details.get("name", "N/A")).exists():
                 jogosBanco = Jogos(
                     name = game_details.get("name", "N/A"),
@@ -146,7 +145,8 @@ def paginaJogo(request, nome):
                 jogosBanco.save()
 
     context = {
-        "gameInfo": gameInfo
+        "gameInfo": gameInfo,
+        "nome": nome,
     }
 
     return render(request, "steamview/paginaJogo.html", context)

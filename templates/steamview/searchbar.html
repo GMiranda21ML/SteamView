@@ -6,8 +6,8 @@
 <main>
     <div class="center-container">
         <h1>Search for any game:</h1>
-        <form class="search-container">
-            <input type="text" name="q" placeholder="Search your game...">
+        <form class="search-container" action={% url "searchBar" %} method="get">
+            <input type="text" name="nome" placeholder="Search your game..." required>
             <button class="search-button" type="submit">🔍</button>
         </form>
     </div>
