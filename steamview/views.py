@@ -197,4 +197,12 @@ def ratingSearchPage(request):
     return render(request, "steamview/ratingsearch.html")
 
 def searchBar(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    if request.method == "GET":
+        nome = request.GET.get("nome")
+        if nome:
+            return redirect("paginaJogo", nome=nome)
+
     return render(request, "steamview/searchbar.html")
