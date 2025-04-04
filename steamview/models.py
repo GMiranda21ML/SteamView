@@ -10,3 +10,10 @@ class Jogos(models.Model):
 
     def __str__(self):
         return self.name
+    
+class HistoricoPesquisa(models.Model):
+    name = models.CharField(max_length=150)
+    frequency = models.IntegerField()
+
+    def __str__(self):
+        return self.name
