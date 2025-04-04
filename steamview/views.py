@@ -169,7 +169,7 @@ def api_jogos(request):
     page_number = int(request.GET.get("page", 1))
     all_games = Jogos.objects.all().order_by('-rating')
 
-    paginator = Paginator(all_games, 6)  # 6 por página
+    paginator = Paginator(all_games, 10)  # 6 por página
     try:
         page = paginator.page(page_number)
     except EmptyPage:
