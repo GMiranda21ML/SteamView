@@ -5,5 +5,7 @@ urlpatterns = [
     path("", paginaJogo, name = "paginaJogo"),
     path("search/", searchBar, name ="searchBar"),
     path("ratingsearch/api/", api_jogos, name="api_jogos"),
-    path("ratingsearch/", ratingSearchPage, name="ratingSearchPage")
+    path("ratingsearch/", ratingSearchPage, name="ratingSearchPage"),
+    path("jogo/<str:nome>/", paginaJogo, name="paginaJogo"),
+
 ]

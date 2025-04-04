@@ -18,11 +18,13 @@ async function fetchGames() {
       const card = document.createElement('div');
       card.classList.add('game-card');
       card.innerHTML = `
+      <a href="/jogo/${encodeURIComponent(game.name)}" style="text-decoration: none; color: inherit;">
         <img src="${game.image}" alt="${game.name}" style="width: 100%; border-radius: 8px;">
         <h4>${game.name}</h4>
         <p>Nota: ${game.rating}</p>
         <p><strong>${game.price}</strong></p>
-      `;
+      </a>
+      `;    
       container.appendChild(card);
     });
 

@@ -107,12 +107,12 @@ def importar_jogos():
 
 # view da paginaJogo
 @csrf_exempt
-def paginaJogo(request):
+def paginaJogo(request, nome):
 
     if not request.user.is_authenticated:
         return redirect("login")
 
-    game_name = "hogwarts legacy"
+    game_name = nome
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
