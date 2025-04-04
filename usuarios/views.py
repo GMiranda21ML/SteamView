@@ -13,7 +13,7 @@ def loginView(request):
 
         if user is not None:
             login(request, user)
-            return redirect("paginaJogo")
+            return redirect("searchBar")
         else:
             messages.error(request, "Usuário ou senha inválidos.")
 
