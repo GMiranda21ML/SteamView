@@ -4,10 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos
+from .models import Jogos, HistoricoPesquisa
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
-
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -196,13 +195,27 @@ def api_jogos(request):
 def ratingSearchPage(request):
     return render(request, "steamview/ratingsearch.html")
 
+
 def searchBar(request):
     if not request.user.is_authenticated:
         return redirect("login")
-
+    
     if request.method == "GET":
         nome = request.GET.get("nome")
-        if nome:
+        
+        if nome: 
+            historico = HistoricoPesquisa.objects.filter(name=nome).first()
+            
+            if historico:  
+                historico.frequency += 1  
+                historico.save()  
+            else:
+                historico = HistoricoPesquisa(
+                    name=nome,
+                    frequency=1
+                )
+                historico.save()  
+            
             return redirect("paginaJogo", nome=nome)
-
+        
     return render(request, "steamview/searchbar.html")
