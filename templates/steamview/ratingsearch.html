@@ -1,1 +1,16 @@
+{% extends "shared/base.html" %}
 {% load static %}
+
+{% block content %}
+<h2 style="color: white; margin-left: 20px;">Jogos com Melhor Avaliação</h2>
+
+<div class="games-container" id="games-container">
+    <!-- Os cards serão adicionados via JavaScript -->
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<link rel="stylesheet" href="{% static 'styles/rating.css' %}">
+<script src="{% static 'js/ratingsearch.js' %}"></script>
+{% endblock %}

@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
 from .models import Jogos
+from django.core.paginator import Paginator
+from django.http import JsonResponse
+
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -56,7 +59,7 @@ def paginaJogo(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    game_name = "elden ring"
+    game_name = "persona 3"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
@@ -95,6 +98,29 @@ def paginaJogo(request):
 
     return render(request, "steamview/paginaJogo.html", context)
 
+def api_jogos(request):
+    page_number = request.GET.get("page", 1)
+
+    # Ordena por rating (nota) do maior para o menor
+    all_games = Jogos.objects.all().order_by('-rating')
+    
+    paginator = Paginator(all_games, 10)  # 10 jogos por página
+    page = paginator.get_page(page_number)
+
+    games_list = [
+        {
+            "name": jogo.name,
+            "image": jogo.image,
+            "price": jogo.price,
+            "rating": jogo.rating
+        }
+        for jogo in page.object_list
+    ]
+
+    return JsonResponse({"games": games_list})
+
+def ratingSearchPage(request):
+    return render(request, "steamview/ratingsearch.html")
 
 def searchBar(request):
     return render(request, "steamview/searchbar.html")
