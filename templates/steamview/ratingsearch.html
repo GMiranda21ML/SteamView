@@ -4,10 +4,13 @@
 {% block content %}
 <h2 style="color: white; margin-left: 20px;">Jogos com Melhor Avaliação</h2>
 
-<div class="games-container" id="games-container">
-    <!-- Os cards serão adicionados via JavaScript -->
+<div class="games-grid" id="games-container">
+  <!-- Cards serão adicionados aqui via JS -->
 </div>
 
+<div style="text-align: center; margin: 20px;">
+  <button id="load-more" style="padding: 10px 20px; font-weight: bold;">Mostrar mais</button>
+</div>
 {% endblock %}
 
 {% block extra_scripts %}

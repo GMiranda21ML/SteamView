@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
 from .models import Jogos
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 
 import requests
@@ -151,14 +151,32 @@ def paginaJogo(request):
 
     return render(request, "steamview/paginaJogo.html", context)
 
-def api_jogos(request):
-    page_number = request.GET.get("page", 1)
+def remover_duplicatas():
+    nomes_vistos = set()
+    jogos = Jogos.objects.all().order_by('id')  # manter o primeiro inserido
 
-    # Ordena por rating (nota) do maior para o menor
+    for jogo in jogos:
+        nome_normalizado = jogo.name.strip().lower()
+        if nome_normalizado in nomes_vistos:
+            print(f"Removendo duplicata: {jogo.name}")
+            jogo.delete()
+        else:
+            nomes_vistos.add(nome_normalizado)
+
+    print("Limpeza de duplicatas finalizada!")
+
+def api_jogos(request):
+    page_number = int(request.GET.get("page", 1))
     all_games = Jogos.objects.all().order_by('-rating')
-    
-    paginator = Paginator(all_games, 10)  # 10 jogos por página
-    page = paginator.get_page(page_number)
+
+    paginator = Paginator(all_games, 6)  # 6 por página
+    try:
+        page = paginator.page(page_number)
+    except EmptyPage:
+        return JsonResponse({
+            "games": [],
+            "has_next": False
+        })
 
     games_list = [
         {
@@ -170,7 +188,10 @@ def api_jogos(request):
         for jogo in page.object_list
     ]
 
-    return JsonResponse({"games": games_list})
+    return JsonResponse({
+        "games": games_list,
+        "has_next": page.has_next()
+    })
 
 def ratingSearchPage(request):
     return render(request, "steamview/ratingsearch.html")

@@ -10,6 +10,10 @@ async function fetchGames() {
     const data = await response.json();
     const container = document.getElementById('games-container');
 
+    if (!data.has_next || data.games.length === 0) {
+        document.getElementById('load-more').style.display = 'none';
+    }
+      
     data.games.forEach(game => {
       const card = document.createElement('div');
       card.classList.add('game-card');
@@ -30,11 +34,8 @@ async function fetchGames() {
   loading = false;
 }
 
+// Primeira chamada automática
 fetchGames();
 
-document.getElementById('games-container').addEventListener('scroll', function () {
-  const container = this;
-  if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 20) {
-    fetchGames();
-  }
-});
+// Botão "Mostrar mais"
+document.getElementById('load-more').addEventListener('click', fetchGames);
