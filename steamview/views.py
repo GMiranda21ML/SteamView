@@ -52,6 +52,59 @@ def buscarPrecoSteam(game_name):
                         return data[str(app_id)]["data"].get("price_overview", {}).get("final_formatted", "Preço não disponível")
     return "Preço não disponível"
 
+def importar_jogos():
+    nomes = [
+        "Hollow Knight",
+        "Stardew Valley",
+        "Celeste",
+        "The Witcher 3: Wild Hunt",
+        "Red Dead Redemption 2",
+        "Portal 2",
+        "Terraria",
+        "Hades",
+        "Undertale",
+        "Bioshock Infinite",
+        "Cuphead",
+        "It Takes Two",
+        "Don't Starve",
+        "Dark Souls III",
+        "Sekiro: Shadows Die Twice",
+        "Slay the Spire",
+        "Subnautica",
+        "Dead Cells",
+        "Outer Wilds",
+        "Hogwarts Legacy"
+    ]
+
+    for nome in nomes:
+        if Jogos.objects.filter(name__iexact=nome).exists():
+            print(f"{nome} já está no banco.")
+            continue
+
+        game = buscarJogoPorNome(nome)
+        if game:
+            game_id = game.get("id")
+            detalhes = buscarDetalhesDoJogo(game_id)
+            preco = buscarPrecoSteam(nome)
+
+            if detalhes:
+                descricao_html = detalhes.get("description", "Descrição não disponível.")
+                descricao_limpa = BeautifulSoup(descricao_html, "html.parser").get_text()
+
+                novo_jogo = Jogos(
+                    name = detalhes.get("name", "N/A"),
+                    description = descricao_limpa,
+                    rating = detalhes.get("rating", "0.0"),
+                    image = detalhes.get("background_image", ""),
+                    price = preco
+                )
+                novo_jogo.save()
+                print(f"✅ {nome} importado com sucesso.")
+            else:
+                print(f"❌ Detalhes não encontrados para {nome}")
+        else:
+            print(f"❌ Jogo não encontrado: {nome}")
+
 # view da paginaJogo
 @csrf_exempt
 def paginaJogo(request):
@@ -59,7 +112,7 @@ def paginaJogo(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    game_name = "persona 3"
+    game_name = "hogwarts legacy"
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
