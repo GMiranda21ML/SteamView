@@ -193,6 +193,8 @@ def api_jogos(request):
     })
 
 def ratingSearchPage(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
     return render(request, "steamview/ratingsearch.html")
 
 
