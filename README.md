@@ -61,6 +61,103 @@ O jira ficou com a criação do backlog com atualização da primeira sprint, ju
 
 ---
 
+<details>
+<summary>📝 SEGUNDA ENTRAGA </summary>
+
+O objetivo desta segunda sprint é começar a fazer o projeto de verdade, implementando nossas primeiras histórias de usuário na prática.
+
+
+## Histórias implementadas:
+
+
+1. Pesquisa de jogos, que permite ao usuário encontrar jogos específicos por meio do nome do jogo.
+
+
+![Searchbar](img/Telasearchbar.png)
+
+
+2. Exibição de detalhes dos jogos, permitindo que o usuário consiga ver mais informações a respeito do título pesquisado.
+
+
+
+
+![Informacoesjogos](img/Telajogo.png)
+
+
+
+
+3. Exibição da avaliação dos jogos, o que permite ao usuário ter uma noção mais clara do feedback da comunidade a respeito de determinado jogo.
+
+
+
+
+![RatingJogos](img/Ratings.png)
+
+# Jira
+
+
+Trouxemos uma atualização do backlog no Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos essas 3 histórias.Para acessá-lo, [clique aqui](https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiNzkyMmY3OTcxZDQ0NDM2MWEwMjk5ZWQwYzZiOWU5OTEiLCJwIjoiaiJ9).
+
+BackLog:
+
+![Jira](img/backlogjira1.png)
+
+Board:
+
+![Jira](img/Boardjira.png)
+
+
+# Screencast
+Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui]. Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, clique aqui.
+
+# Bugtracker
+Fizemos a criação de um bugtracker, onde podemos ver a correção de bugs e melhorias no Steam View.
+
+![Issues](img/Issues.png)
+
+Bugs corrigidos:
+
+
+1. Bug de redirecionamento de tela:
+
+
+- Antes, o usuário era redirecionado de forma errada. Ele ia para uma tela onde era para aparecer o jogo antes de pesquisá-lo, o que, após essa correção, foi ajeitado e agora o usuário é direcionado primeiramente para a barra de pesquisa e depois para as informações do jogo.
+
+
+
+
+2. Bug de repetição de jogos no banco de dados:
+
+
+- O código, antes, não verificava se o jogo existia no banco de dados e o criava repetido. Agora ocorre a verificação e, caso não esteja, é criado no banco.
+
+
+
+
+Melhorias:
+
+
+1. Mudança na API atualizada:
+
+
+- Alteração da API da Steam pela API da RAWG, com o intuito de melhorar a funcionalidade do site, já que a API da Steam se encontrava desatualizada, assim, não trazendo as informações solicitadas de jogos mais recentes ou trazendo informações desatualizadas.
+
+
+
+2. Edição do redirecionamento para o login:
+
+
+- Caso o usuário não esteja logado, é redirecionado automaticamente para a tela de login.
+
+# Relatório
+
+Criamos um documento para relatar como foram dividas as tarefas entre o grupo.Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1kGRfZ-oWasivb5I1HcR4BfNv_ETWxWy5BHzKlodHNbM/edit?usp=sharing).
+
+
+</details>
+
+---
+
 ## 🫂 Integrantes
 | Matricula  | Nome                                  | Email da school    |
 | ---------- | ------------------------------------- | ------------------ |
