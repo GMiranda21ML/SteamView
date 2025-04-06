@@ -101,6 +101,9 @@ Trouxemos uma atualização do backlog no Jira, que é por onde conseguimos gere
 
 ![Jira](img/backlogjira.png)
 
+# Screencast
+Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui]. Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, clique aqui.
+
 
 
 </details>
