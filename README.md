@@ -25,9 +25,11 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
     <a href="https://www.figma.com/design/3nPg7kwxtVKxKwypslPQtB/SteamView?node-id=58-582&t=77d8WioUx6bMMnMa-1">
         <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
     </a>
-    <a href="https://www.youtube.com/watch?v=4X-COxfohOs">
-        <img src="https://img.shields.io/badge/ScreenCast-FF0000?style=for-the-badge&logo=youtube&logoColor=white
-" alt="Screencast">
+    <a href="https://youtu.be/1OVcVGjYgdY">
+        <img src="https://img.shields.io/badge/Screencast-FF0000?style=for-the-badge&logo=coursera&logoColor=white" alt="Screencast">
+    </a>
+    <a href="https://steamview.azurewebsites.net/">
+        <img src="https://img.shields.io/badge/Steamview-007BFF?style=for-the-badge&logo=firefox&logoColor=white" alt="Screencast">
     </a>
 </div>
 
