@@ -61,6 +61,43 @@ O jira ficou com a criação do backlog com atualização da primeira sprint, ju
 
 ---
 
+<details>
+<summary>📝 SEGUNDA ENTRAGA </summary>
+
+O objetivo desta segunda sprint é começar a fazer o projeto de verdade, implementando nossas primeiras histórias de usuário na prática.
+
+
+## Histórias implementadas:
+
+
+1. Pesquisa de jogos, que permite ao usuário encontrar jogos específicos por meio do nome do jogo.
+
+
+![Searchbar](img/Telasearchbar.png)
+
+
+2. Exibição de detalhes dos jogos, permitindo que o usuário consiga ver mais informações a respeito do título pesquisado.
+
+
+
+
+![Informacoesjogos](img/Telajogo.png)
+
+
+
+
+3. Exibição da avaliação dos jogos, o que permite ao usuário ter uma noção mais clara do feedback da comunidade a respeito de determinado jogo.
+
+
+
+
+![RatingJogos](img/Ratings.png)
+
+
+</details>
+
+---
+
 ## 🫂 Integrantes
 | Matricula  | Nome                                  | Email da school    |
 | ---------- | ------------------------------------- | ------------------ |
