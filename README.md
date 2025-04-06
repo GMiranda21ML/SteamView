@@ -149,6 +149,9 @@ Melhorias:
 
 - Caso o usuário não esteja logado, é redirecionado automaticamente para a tela de login.
 
+# Relatório
+
+Criamos um documento para relatar como foram dividas as tarefas entre o grupo.Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1kGRfZ-oWasivb5I1HcR4BfNv_ETWxWy5BHzKlodHNbM/edit?usp=sharing).
 
 
 </details>
