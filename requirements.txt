@@ -4,10 +4,15 @@ bs4==0.0.2
 certifi==2025.1.31
 charset-normalizer==3.4.1
 Django==5.1.6
+gunicorn==23.0.0
 idna==3.10
+packaging==24.2
+psycopg2-binary==2.9.10
+python-dotenv==1.1.0
 requests==2.32.3
 soupsieve==2.6
 sqlparse==0.5.3
 typing_extensions==4.13.0
 tzdata==2025.2
 urllib3==2.3.0
+whitenoise==6.9.0
