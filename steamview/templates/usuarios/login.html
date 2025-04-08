@@ -1,6 +1,7 @@
 {% extends "shared/base.html" %}
 
 {% load static %}
+{% load socialaccount %}
 
 {% block content %}
 <main class="login">
@@ -22,6 +23,11 @@
 
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required autocomplete="current-password">
+
+            <a href="{% provider_login_url 'github' %}" class="github-button">
+                <img class="img-button" src="{% static 'img/github.svg' %}" alt="GitHub">
+                GitHub
+            </a>                                  
 
             <button type="submit">Entrar</button>
         </form>

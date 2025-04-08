@@ -25,9 +25,11 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
     <a href="https://www.figma.com/design/3nPg7kwxtVKxKwypslPQtB/SteamView?node-id=58-582&t=77d8WioUx6bMMnMa-1">
         <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
     </a>
-    <a href="https://www.youtube.com/watch?v=4X-COxfohOs">
-        <img src="https://img.shields.io/badge/ScreenCast-FF0000?style=for-the-badge&logo=youtube&logoColor=white
-" alt="Screencast">
+    <a href="https://youtu.be/1OVcVGjYgdY">
+        <img src="https://img.shields.io/badge/Screencast-FF0000?style=for-the-badge&logo=coursera&logoColor=white" alt="Screencast">
+    </a>
+    <a href="https://steamview.azurewebsites.net/">
+        <img src="https://img.shields.io/badge/Steamview-007BFF?style=for-the-badge&logo=firefox&logoColor=white" alt="Screencast">
     </a>
 </div>
 
@@ -100,15 +102,15 @@ Trouxemos uma atualização do backlog no Jira, que é por onde conseguimos gere
 
 BackLog:
 
-![Jira](img/backlogjira1.png)
+![Jira](img/Backlogjiraentrega2.png)
 
 Board:
 
-![Jira](img/Boardjira.png)
+![Jira](img/Boardjiraentrega2.png)
 
 
 # Screencast
-Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui]. Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, clique aqui.
+Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui](https://youtu.be/1OVcVGjYgdY). Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, [clique aqui](https://steamview.azurewebsites.net/).
 
 # Bugtracker
 Fizemos a criação de um bugtracker, onde podemos ver a correção de bugs e melhorias no Steam View.

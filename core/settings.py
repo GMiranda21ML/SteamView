@@ -48,6 +48,8 @@ else:
         }
     }
 
+SITE_ID = 1
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,6 +62,16 @@ INSTALLED_APPS = [
     'steamview.apps.SteamviewConfig',
     'usuarios.apps.UsuariosConfig',
     "whitenoise.runserver_nostatic",
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'django.contrib.sites',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +83,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -137,3 +150,21 @@ STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': 'Ov23li4U5L5GlWHbH5ig',
+            'secret': '31dc1ed7c20329a17eebf9fdf84f706368ca94eb',
+            'key': ''
+        }
+    }
+}
+
+LOGIN_REDIRECT_URL = "/"
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_LOGOUT_ON_GET = True
+
+LOGOUT_REDIRECT_URL = "/login"
