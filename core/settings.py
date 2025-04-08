@@ -48,6 +48,8 @@ else:
         }
     }
 
+SITE_ID = 1
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -152,9 +154,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': 'Ov23li4U5L5GlWHbH5ig',
+            'secret': '31dc1ed7c20329a17eebf9fdf84f706368ca94eb',
             'key': ''
         }
     }
 }
+
+LOGIN_REDIRECT_URL = "/"
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_LOGOUT_ON_GET = True
+
+LOGOUT_REDIRECT_URL = "/login"
