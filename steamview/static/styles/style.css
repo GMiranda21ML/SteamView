@@ -59,6 +59,13 @@ header nav li a:hover {
     color: #66c0f4;
 }
 
+footer {
+    background-color: #171a21;
+    color: #ecf0f1;
+    padding: 16px 0;
+    border-top: 1px solid #2b475e;
+}
+
 header .container {
     display: flex;
     align-items: center;
@@ -118,6 +125,7 @@ main .container .game-info {
     border-radius: 20px 20px;
 }
 
+/* Estilo da tela de login */
 .login {
     display: flex;
     justify-content: center;
@@ -130,7 +138,7 @@ main .container .game-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(128, 128, 128, 0.25);  /* Cinza translúcido */
+    background: rgba(128, 128, 128, 0.25); /* Cinza com transparência */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 40px;
@@ -142,7 +150,12 @@ main .container .game-info {
     font-family: 'Special Gothic Expanded One', sans-serif;
 }
 
-input {
+.login h2 {
+    margin-bottom: 20px;
+}
+
+/* Inputs replicados do cadastro */
+.login input {
     width: 100%;
     padding: 12px 16px;
     margin: 12px 0;
@@ -155,10 +168,10 @@ input {
     font-family: 'Special Gothic Expanded One', sans-serif;
 }
 
-input:focus {
+.login input:focus {
     border-color: #66c0f4;
-    background-color: rgba(0, 0, 0, 0.4);
     outline: none;
+    background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 0 1px rgba(102, 192, 244, 0.3);
 }
 
@@ -170,27 +183,28 @@ button, .github-button {
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    cursor: pointer;
 }
 
 button {
     background-color: rgba(102, 192, 244, 0.2);
     border: 1px solid rgba(102, 192, 244, 0.4);
     color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: rgba(102, 192, 244, 0.4);
+    transform: translateY(-2px);
 }
 
 .github-button {
     background-color: rgba(23, 26, 33, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
     color: white;
 }
 
@@ -205,7 +219,7 @@ button:hover {
     margin-right: 8px;
 }
 
-p {
+.login p {
     margin-top: 18px;
 }
 
