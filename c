@@ -10,7 +10,7 @@
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
-                    <p class="{{ message.tags }}" style="color: #2c4c9c; font-family: 'Special Gothic Expanded One', sans-serif;">{{ message }}</p>
+                    <p class="{{ message.tags }}" style="color: #2c4c9c;">{{ message }}</p>
                 {% endfor %}
             </div>
         {% endif %}
@@ -18,19 +18,19 @@
         <form method="POST">
             {% csrf_token %}
             <div style="text-align: left; margin-bottom: 8px;">
-                <label for="username" style="font-size: 14px; font-family: 'Special Gothic Expanded One', sans-serif;">USUÁRIO:</label>
+                <label for="username" style="font-size: 14px;">USUÁRIO</label>
             </div>
             <input type="text" id="username" name="username" required autocomplete="username">
 
             <div style="text-align: left; margin-bottom: 8px;">
-                <label for="password" style="font-size: 14px; font-family: 'Special Gothic Expanded One', sans-serif;">SENHA:</label>
+                <label for="password" style="font-size: 14px;">SENHA</label>
             </div>
             <input type="password" id="password" name="password" required autocomplete="current-password">
 
-            <button type="submit" style="font-family: 'Special Gothic Expanded One', sans-serif;">ENTRAR</button>
+            <button type="submit">ENTRAR</button>
 
-            <div style="margin: 16px 0; text-align: center; color: #666; font-family: 'Special Gothic Expanded One', sans-serif;">
-                <span>OU</span>
+            <div style="margin: 16px 0; text-align: center; color: #666;">
+                <span>ou</span>
             </div>
 
             <a href="{% provider_login_url 'github' %}" class="github-button">
@@ -38,10 +38,10 @@
                 GITHUB
             </a>                                  
         </form>
-        <p style="font-size: 14px; margin-top: 24px; font-family: 'Special Gothic Expanded One', sans-serif;">
-            NÃO TEM UMA CONTA? 
+        <p style="font-size: 14px; margin-top: 24px;">
+            Não tem uma conta? 
             <a href="{% url 'cadastro' %}" style="color: #2c4c9c; text-decoration: none; font-weight: bold;">
-                CADASTRE-SE
+                Cadastre-se
             </a>
         </p>
     </div>
