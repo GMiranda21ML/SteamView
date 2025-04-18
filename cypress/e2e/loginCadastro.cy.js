@@ -1,7 +1,5 @@
 Cypress.Commands.add('deleteUsers', () => {
-  const pythonPath = '"C:\\Program Files\\Python39\\python.exe"'; 
-  const scriptPath = '"C:\\Gabriel Lima\\faculdade\\Cesar\\FDS\\SteamView\\delete_users.py"';
-  cy.exec(`${pythonPath} ${scriptPath}`).then((result) => {
+  cy.exec('python delete_users.py', { failOnNonZeroExit: false }).then((result) => {
     console.log(result.stdout); 
     if (result.stderr) {
       console.error(result.stderr);
