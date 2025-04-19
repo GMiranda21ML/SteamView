@@ -1,17 +1,48 @@
 {% extends "shared/base.html" %}
 {% load socialaccount %}
-
 {% load static %}
 
 {% block content %}
-<main>
-    <div class="center-container">
-        <h1>Search for any game:</h1>
-        <form class="search-container" action={% url "searchBar" %} method="get">
-            <input type="text" name="nome" placeholder="Search your game..." required>
-            <button class="search-button" type="submit">🔍</button>
-        </form>
-    </div>
-</main>
+<main class="login">
+    <div class="search-wrapper" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px;  <!-- Increased padding -->
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(33, 18, 173, 0.35);
+    width: fit-content;
+    margin: 0 auto;
+    flex-direction: column;
+    min-width: 600px;  <!-- Added minimum width -->
+    margin-top: 100px;  <!-- Added top margin -->
+">
+    <h1 style="margin-bottom: 24px; font-size: 32px; text-align: center; font-family: 'Special Gothic Expanded One', sans-serif;">SEARCH FOR ANY GAME</h1>
+    <form action="{% url 'searchBar' %}" method="get" style="display: flex;">
+        <div class="search-container" style="
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 8px 12px;
+        ">
+            <input type="text" name="nome" placeholder="Search your game..." required style="
+                background: transparent;
+                color: white;
+                border: none;
+                outline: none;
+                font-size: 16px;
+                width: 450px;
+            ">
+            <button class="search-button" type="submit" style="background: transparent; border: none;">
+                <img src="{% static 'img/search.png' %}" alt="Search" style="width: 20px; height: 20px;">
+            </button>
+        </div>
+    </form>
+</div>
 
-{% endblock  %}
+</main>
+{% endblock %}
