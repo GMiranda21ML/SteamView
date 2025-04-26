@@ -287,3 +287,6 @@ def maisJogados(request):
         "jogos": jogos
     }
     return render(request, "steamview/maisjogados.html", context)
+
+def maisJogadosHist(request):
+    return render(request, 'steamview/maisJogadosHist.html')

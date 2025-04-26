@@ -1,0 +1,100 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<main class="login">
+    <div class="maisJogadosHist-container">
+        <h1 class="maisJogadosHist-title">Jogos mais e menos Jogados</h1>
+
+        <div class="main-content">
+            <div class="filter-options">
+                <label>
+                    <input type="radio" name="filter" value="mais-jogados" checked>
+                    Mais Jogados
+                </label><br>
+                <label>
+                    <input type="radio" name="filter" value="menos-jogados">
+                    Menos Jogados
+                </label>
+            </div>
+
+            <div class="games-grid">
+                <!-- Caixas dos jogos -->
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+                <div class="game-cardJogados">
+                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
+                    <div class="game-info">
+                        <h3>Baldur's Gate 3</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
