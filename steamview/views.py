@@ -222,8 +222,51 @@ def searchBar(request):
 
     return render(request, "steamview/searchbar.html")
 
+
 def lancamentos(request):
     return render(request, 'steamview/lancamentos.html')
 
+
 def maisJogados(request):
-    return render(request, 'steamview/maisjogados.html')
+    url = "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
+    response = requests.get(url)
+    jogos = []
+
+    if response.status_code == 200:
+        data = response.json()
+        games = data.get("response", {}).get("ranks", [])[:20]
+
+        for game in games:
+            appid = game.get("appid")
+            current_players = 0  # Inicializando com valor 0 para jogadores ativos
+
+            # --- Parte 1: Buscar nome e imagem pela API da Steam ---
+            details_url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
+            details_response = requests.get(details_url)
+
+            nome = "Nome não disponível"
+            imagem = ""
+
+            if details_response.status_code == 200:
+                details_data = details_response.json().get(str(appid), {}).get("data", {})
+                nome = details_data.get("name", "Nome não disponível")
+                imagem = details_data.get("header_image", "")
+
+            # --- Parte 2: Buscar jogadores ativos pela API da Steam ---
+            players_url = f"https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid={appid}"
+            players_response = requests.get(players_url)
+
+            if players_response.status_code == 200:
+                players_data = players_response.json()
+                current_players = players_data.get("response", {}).get("player_count", 0)
+
+            jogos.append({
+                "nome": nome,
+                "imagem": imagem,
+                "current_players": current_players  # Número de jogadores ativos
+            })
+
+    context = {
+        "jogos": jogos
+    }
+    return render(request, "steamview/maisjogados.html", context)
