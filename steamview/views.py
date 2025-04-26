@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
@@ -226,8 +227,11 @@ def searchBar(request):
 def lancamentos(request):
     return render(request, 'steamview/lancamentos.html')
 
-
+@cache_page(60 * 15)
 def maisJogados(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    
     url = "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
     response = requests.get(url)
     jogos = []
