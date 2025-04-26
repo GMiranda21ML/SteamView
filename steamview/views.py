@@ -219,5 +219,8 @@ def searchBar(request):
                 historico.save()  
             
             return redirect("paginaJogo", nome=nome)
-        
+
     return render(request, "steamview/searchbar.html")
+
+def lancamentos(request):
+    return render(request, 'steamview/lancamentos.html')

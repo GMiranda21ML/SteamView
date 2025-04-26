@@ -1,0 +1,52 @@
+{% extends "shared/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <h2>Lançamentos Populares</h2>
+        
+        <div class="games-grid">
+            <div class="game-card">
+                <img src="{% static 'img/games/baldurs-gate-3.jpg' %}" alt="Baldur's Gate 3">
+                <div class="game-info">
+                    <h3>Baldur's Gate 3</h3>
+                    <p class="release-date">3 ago. 2023</p>
+                    <div class="rating">
+                        <span class="score">95%</span>
+                        <span class="reviews">Extremamente Positivas</span>
+                    </div>
+                    <p class="price">R$ 199,99</p>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="{% static 'img/games/starfield.jpg' %}" alt="Starfield">
+                <div class="game-info">
+                    <h3>Starfield</h3>
+                    <p class="release-date">6 set. 2023</p>
+                    <div class="rating">
+                        <span class="score">82%</span>
+                        <span class="reviews">Muito Positivas</span>
+                    </div>
+                    <p class="price">R$ 299,99</p>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="{% static 'img/games/lies-of-p.jpg' %}" alt="Lies of P">
+                <div class="game-info">
+                    <h3>Lies of P</h3>
+                    <p class="release-date">19 set. 2023</p>
+                    <div class="rating">
+                        <span class="score">88%</span>
+                        <span class="reviews">Muito Positivas</span>
+                    </div>
+                    <p class="price">R$ 249,99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
