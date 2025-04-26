@@ -4,40 +4,112 @@
 {% load socialaccount %}
 
 {% block content  %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 20 Jogos Mais Jogados</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div class="container">
-<<<<<<< HEAD
-        <h1>Top 20 Jogos Mais Jogados do Mês</h1>
-=======
-        <h1>Top 20 Jogos Mais Jogados do MÃªs</h1>
->>>>>>> d2f01bc598050319b83ca812a148df36b16377ab
-        
-        <div class="games-grid">
-            <div class="game-card">
-                <span class="ranking">1</span>
-                <img src="{% static 'images/game1.jpg' %}" alt="League of Legends">
-                <h3>League of Legends</h3>
-                <p>Jogadores Ativos: 180M</p>
+    <main class="login">
+        <div class="maisjogados-container">
+            <h1>Top 20 Jogos Mais Jogados do Mês</h1>
+            <div class="games-grid">
+                <div class="game-card top-three">
+                    <div class="ranking-container">
+                        <span class="ranking">1º Lugar 🏆</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>League of Legends</h3>
+                    <p>Jogadores Ativos: 180M</p>
+                </div>
+    
+                <div class="game-card top-three">
+                    <div class="ranking-container">
+                        <span class="ranking">2º Lugar 🥈</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Minecraft</h3>
+                    <p>Jogadores Ativos: 170M</p>
+                </div>
+    
+                <div class="game-card top-three">
+                    <div class="ranking-container">
+                        <span class="ranking">3º Lugar 🥉</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Fortnite</h3>
+                    <p>Jogadores Ativos: 150M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">4º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>PUBG: Battlegrounds</h3>
+                    <p>Jogadores Ativos: 120M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">5º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">6º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">7º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">8º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">9º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">10º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
+                <div class="game-card">
+                    <div class="ranking-container">
+                        <span class="ranking">11º</span>
+                    </div>
+                    <img src="{% static "img/league of legends.jpeg" %}" alt="CS:GO">
+                    <h3>Counter-Strike 2</h3>
+                    <p>Jogadores Ativos: 110M</p>
+                </div>
+    
             </div>
-
-            <div class="game-card">
-                <span class="ranking">2</span>
-                <img src="images/game2.jpg" alt="Minecraft">
-                <h3>Minecraft</h3>
-                <p>Jogadores Ativos: 170M</p>
-            </div>
-
-      
         </div>
-    </div>
-</body>
-</html>
+    </main>
+    </body>
+    </html>
 {% endblock  %}

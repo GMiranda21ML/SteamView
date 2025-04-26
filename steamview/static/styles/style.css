@@ -23,10 +23,14 @@ html, body {
     display: flex;
     flex-direction: column;
     font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
 }
 
 body {
     background-color: #000000;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 body, input, textarea, p {
@@ -49,16 +53,18 @@ header {
     padding: 16px 0;
     box-shadow: 0 2px 10px rgba(43, 71, 94, 0.3);
     border-bottom: 1px solid rgba(43, 71, 94, 0.4);
+    position: relative;
+    z-index: 10;
 }
 
 footer {
-    background: linear-gradient(to right, rgba(23, 26, 33, 0.85), rgba(27, 40, 56, 0.85));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.9);
     color: #ecf0f1;
     padding: 16px 0;
-    box-shadow: 0 -2px 10px rgba(43, 71, 94, 0.3);
-    border-top: 1px solid rgba(43, 71, 94, 0.4);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
 header nav li a {
@@ -68,13 +74,6 @@ header nav li a {
 
 header nav li a:hover {
     color: #66c0f4;
-}
-
-footer {
-    background-color: #171a21;
-    color: #ecf0f1;
-    padding: 16px 0;
-    border-top: 1px solid #2b475e;
 }
 
 header .container {
@@ -106,6 +105,10 @@ main {
     flex: 1;
     background-color: #000000;
     color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 160px); /* header + footer */
 }
 
 main h2 {
@@ -138,10 +141,27 @@ main .container .game-info {
 
 .login {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: flex-start; /* Changed from center */
+    align-items: flex-start; /* Changed from center */
+    min-height: 100vh;
     background: linear-gradient(45deg, #171a21 0%, #1b2838 50%, #2b475e 100%);
+    padding: 20px;
+    overflow-y: auto; /* Added to enable scrolling */
+}
+
+.maisjogados-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 80px auto 20px; /* Added top margin to account for header */
+    padding: 0 20px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 80px; /* Added bottom margin to account for footer */
 }
 
 .login .container {
@@ -232,14 +252,6 @@ button:hover {
     margin-top: 18px;
 }
 
-footer {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #ecf0f1;
-    padding: 16px 0;
-    backdrop-filter: blur(5px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 footer .container {
     justify-items: center;
     text-align: center;
@@ -303,9 +315,14 @@ footer .container {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    padding: 20px 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.game-card {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .game-card {
@@ -316,10 +333,18 @@ footer .container {
     transition: transform 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.8s ease forwards;
+    position: relative;
 }
 
 .game-card:hover {
     transform: translateY(-4px);
+}
+
+.game-card:nth-child(-n+3) {
+    border: 2px solid #66c0f4;
+    transform: scale(1.03);
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(102, 192, 244, 0.6);
 }
 
 .game-card img {
@@ -332,10 +357,14 @@ footer .container {
     padding: 16px;
 }
 
+.game-card:nth-child(-n+3) h3 {
+    color: #00bfff; /* Light blue color for top 3 game titles */
+}
+
 .game-card h3 {
     font-size: 18px;
     margin-bottom: 8px;
-    color: #ffffff;
+    color: #ffffff; /* Keep other game titles white */
 }
 
 .game-card .release-date {
@@ -365,4 +394,28 @@ footer .container {
     font-size: 16px;
     color: #ffffff;
     font-weight: bold;
+}
+
+.ranking-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3; /* Increased z-index to ensure it's always on top */
+}
+
+.ranking {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block; /* Added to ensure proper rendering */
+}
+
+.maisjogados-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 2.5em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
