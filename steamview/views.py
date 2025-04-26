@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos, HistoricoPesquisa
+from .models import Jogos, HistoricoPesquisa, MaisJogados
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 import requests
@@ -227,17 +227,25 @@ def searchBar(request):
 def lancamentos(request):
     return render(request, 'steamview/lancamentos.html')
 
-@cache_page(60 * 15)
+from django.core.cache import cache
+
 def maisJogados(request):
     if not request.user.is_authenticated:
         return redirect("login")
-    
-    url = "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
-    response = requests.get(url)
+
     jogos = []
 
-    if response.status_code == 200:
-        data = response.json()
+    data = cache.get('mais_jogados_data')
+
+    if not data:
+        url = "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            data = response.json()
+            cache.set('mais_jogados_data', data, 60 * 15)
+
+    if data:
         games = data.get("response", {}).get("ranks", [])[:20]
 
         for game in games:
@@ -262,13 +270,20 @@ def maisJogados(request):
                 players_data = players_response.json()
                 current_players = players_data.get("response", {}).get("player_count", 0)
 
+            MaisJogados.objects.create(
+                name=nome,
+                players=current_players,
+                image=imagem
+            )
+
             jogos.append({
                 "nome": nome,
                 "imagem": imagem,
-                "current_players": current_players  # Número de jogadores ativos
+                "current_players": current_players
             })
 
     context = {
         "jogos": jogos
     }
     return render(request, "steamview/maisjogados.html", context)
+

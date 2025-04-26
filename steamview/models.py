@@ -17,3 +17,11 @@ class HistoricoPesquisa(models.Model):
 
     def __str__(self):
         return self.name
+
+class MaisJogados(models.Model):
+    name = models.CharField(max_length=150)
+    players = models.CharField(max_length=15)
+    image = models.URLField()
+
+    def __str__(self):
+        return self.name
