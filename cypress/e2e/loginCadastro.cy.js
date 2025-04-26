@@ -9,7 +9,8 @@ Cypress.Commands.add('deleteUsers', () => {
 
 Cypress.Commands.add('criarUser', () => {
   cy.visit('http://127.0.0.1:8000/login/');
-  cy.contains('a', 'Cadastre-se').click();
+  cy.wait(1000);
+  cy.contains('a', 'CADASTRE-SE').click();
   cy.get('#username').type('Teste Cypress'); 
   cy.get('#email').type('testeCypress@gmail.com'); 
   cy.get('#password1').type('123456'); 
