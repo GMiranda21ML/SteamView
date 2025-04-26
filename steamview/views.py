@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from .models import Jogos, HistoricoPesquisa, MaisJogados
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
+from django.core.cache import cache
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -227,7 +228,6 @@ def searchBar(request):
 def lancamentos(request):
     return render(request, 'steamview/lancamentos.html')
 
-from django.core.cache import cache
 
 def maisJogados(request):
     if not request.user.is_authenticated:
@@ -243,7 +243,7 @@ def maisJogados(request):
 
         if response.status_code == 200:
             data = response.json()
-            cache.set('mais_jogados_data', data, 60 * 15)
+            cache.set('mais_jogados_data', data, 60 * 15)  # 15 minutos de cache
 
     if data:
         games = data.get("response", {}).get("ranks", [])[:20]
@@ -270,11 +270,12 @@ def maisJogados(request):
                 players_data = players_response.json()
                 current_players = players_data.get("response", {}).get("player_count", 0)
 
-            MaisJogados.objects.create(
-                name=nome,
-                players=current_players,
-                image=imagem
-            )
+            if not MaisJogados.objects.filter(name=nome).exists():
+                MaisJogados.objects.create(
+                    name=nome,
+                    players=current_players,
+                    image=imagem
+                )
 
             jogos.append({
                 "nome": nome,
@@ -286,4 +287,3 @@ def maisJogados(request):
         "jogos": jogos
     }
     return render(request, "steamview/maisjogados.html", context)
-
