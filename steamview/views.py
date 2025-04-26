@@ -224,3 +224,6 @@ def searchBar(request):
 
 def lancamentos(request):
     return render(request, 'steamview/lancamentos.html')
+
+def maisJogados(request):
+    return render(request, 'steamview/maisjogados.html')

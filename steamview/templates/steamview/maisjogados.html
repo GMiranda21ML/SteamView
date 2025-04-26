@@ -1,0 +1,39 @@
+{% extends "shared/base.html" %}
+
+{% load static %}
+{% load socialaccount %}
+
+{% block content  %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 20 Jogos Mais Jogados</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Top 20 Jogos Mais Jogados do Mês</h1>
+        
+        <div class="games-grid">
+            <div class="game-card">
+                <span class="ranking">1</span>
+                <img src="{% static 'images/game1.jpg' %}" alt="League of Legends">
+                <h3>League of Legends</h3>
+                <p>Jogadores Ativos: 180M</p>
+            </div>
+
+            <div class="game-card">
+                <span class="ranking">2</span>
+                <img src="images/game2.jpg" alt="Minecraft">
+                <h3>Minecraft</h3>
+                <p>Jogadores Ativos: 170M</p>
+            </div>
+
+      
+        </div>
+    </div>
+</body>
+</html>
+{% endblock  %}
