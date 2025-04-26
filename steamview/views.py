@@ -238,9 +238,8 @@ def maisJogados(request):
 
         for game in games:
             appid = game.get("appid")
-            current_players = 0  # Inicializando com valor 0 para jogadores ativos
+            current_players = 0
 
-            # --- Parte 1: Buscar nome e imagem pela API da Steam ---
             details_url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
             details_response = requests.get(details_url)
 
@@ -252,7 +251,6 @@ def maisJogados(request):
                 nome = details_data.get("name", "Nome não disponível")
                 imagem = details_data.get("header_image", "")
 
-            # --- Parte 2: Buscar jogadores ativos pela API da Steam ---
             players_url = f"https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid={appid}"
             players_response = requests.get(players_url)
 
