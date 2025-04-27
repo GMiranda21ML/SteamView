@@ -3,15 +3,17 @@
 {% load socialaccount %}
 
 {% block content %}
-<h2 style="color: #ecf0f1; text-align: center; margin-top: 10px;">Jogos com Melhor Avaliação</h2>
+  <div class="ratings-container">
+    <h2 class="page-title">Jogos com Melhor Avaliação</h2>
 
-<div class="games-grid" id="games-container">
-  <!-- Cards serão adicionados aqui via JS -->
-</div>
+    <div class="games-grid" id="games-container">
+      <!-- Cards serão adicionados aqui via JS -->
+    </div>
 
-<div style="text-align: center; margin: 20px;">
-  <button id="load-more" style="padding: 10px 20px; font-weight: bold;">Mostrar mais</button>
-</div>
+    <div class="button-container">
+      <button id="load-more" aria-label="Mostrar mais jogos">Mostrar mais</button>
+    </div>
+  </div>
 {% endblock %}
 
 {% block extra_scripts %}

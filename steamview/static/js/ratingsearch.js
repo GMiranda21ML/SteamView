@@ -11,20 +11,28 @@ async function fetchGames() {
     const container = document.getElementById('games-container');
 
     if (!data.has_next || data.games.length === 0) {
-        document.getElementById('load-more').style.display = 'none';
+      document.getElementById('load-more').style.display = 'none';
     }
-      
-    data.games.forEach(game => {
+
+    data.games.forEach((game, index) => {
       const card = document.createElement('div');
       card.classList.add('game-card');
+      card.style.animation = "fadeIn 0.5s ease";  // Adiciona animação leve
       card.innerHTML = `
-      <a href="/jogo/${encodeURIComponent(game.name)}" style="text-decoration: none; color: inherit;">
-        <img src="${game.image}" alt="${game.name}" style="width: 100%; border-radius: 8px;">
-        <h4>${game.name}</h4>
-        <p>Nota: ${game.rating}</p>
-        <p><strong>${game.price}</strong></p>
-      </a>
-      `;    
+        <a href="/jogo/${encodeURIComponent(game.name)}" style="text-decoration: none; color: inherit;">
+          <div class="ranking-container">
+            <div class="ranking">#${(page - 1) * 10 + index + 1}</div>
+          </div>
+          <img src="${game.image}" alt="${game.name}">
+          <div class="game-info">
+            <h3>${game.name}</h3>
+          </div>
+          <div class="game-details">
+            <span class="game-rating">Nota: ${game.rating}</span>
+            <span class="game-price">${game.price}</span>
+          </div>
+        </a>
+      `;
       container.appendChild(card);
     });
 
@@ -41,3 +49,6 @@ fetchGames();
 
 // Botão "Mostrar mais"
 document.getElementById('load-more').addEventListener('click', fetchGames);
+
+card.style.animation = "fadeIn 0.5s ease";  
+
