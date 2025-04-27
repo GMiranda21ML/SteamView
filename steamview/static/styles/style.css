@@ -655,7 +655,7 @@ a {
 }
 
 .maisjogados-container .game-card {
-    min-width: 380px;  /* Largura mínima aumentada */
+    min-width: 400px;  /* Largura mínima aumentada */
     min-height: 300px;  /* Altura mínima aumentada */
 }
 
