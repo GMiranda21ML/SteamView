@@ -27,7 +27,7 @@ html, body {
 }
 
 body {
-    background-color: #000000;
+    background: linear-gradient(45deg, #171a21 0%, #1b2838 50%, #2b475e 100%);
     /* flex: 1; */
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@ header nav li a {
 
 main {
     flex: 1;
-    background-color: #000000;
+    background: linear-gradient(45deg, #171a21 0%, #1b2838 50%, #2b475e 100%);
     color: #ecf0f1;
     padding: 24px 0;
     display: flex;
