@@ -20,11 +20,11 @@
                 width: 160px;]
             ">
                 <label>
-                    <input type="radio" name="filter" value="mais-jogados" >
+                    <input id="normalOrderButton" type="radio" name="filter" value="mais-jogados" >
                     Mais Jogados
                 </label><br>
                 <label>
-                    <input type="radio" name="filter" value="menos-jogados">
+                    <input id="invertOrderButton" type="radio" name="filter" value="menos-jogados">
                     Menos Jogados
                 </label>
             </div>
@@ -54,4 +54,37 @@
         </div>
     </div>
 </main>
+<script>
+    const gamesGrid = document.querySelector('.games-grid');
+    const originalOrder = Array.from(gamesGrid.children); // salva a ordem original
+    
+    document.getElementById('invertOrderButton').addEventListener('click', function() {
+        const reversedCards = [...originalOrder].reverse(); // copia e inverte
+        updateGamesGrid(reversedCards);
+    });
+    
+    document.getElementById('normalOrderButton').addEventListener('click', function() {
+        updateGamesGrid(originalOrder);
+    });
+    
+    function updateGamesGrid(cards) {
+        gamesGrid.innerHTML = '';
+        cards.forEach((card, index) => {
+            gamesGrid.appendChild(card);
+    
+            // Atualiza os textos de posição
+            const ranking = card.querySelector('.ranking');
+            const pos = index + 1;
+            if (pos === 1) {
+                ranking.innerHTML = '🥇 1º Lugar';
+            } else if (pos === 2) {
+                ranking.innerHTML = '🥈 2º Lugar';
+            } else if (pos === 3) {
+                ranking.innerHTML = '🥉 3º Lugar';
+            } else {
+                ranking.innerHTML = `${pos}º Lugar`;
+            }
+        });
+    }
+</script>
 {% endblock %}
