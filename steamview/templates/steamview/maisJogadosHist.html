@@ -11,11 +11,11 @@
             <form method="get" action="{% url 'maisJogadosHist' %}">
                 <div class="filter-options">
                     <label>
-                        <input type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        <input class="filterMais" type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
                         Mais Jogados
                     </label><br>
                     <label>
-                        <input type="radio" name="filter" value="menos-jogados" {% if filtro == 'menos-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        <input class="filterMenos" type="radio" name="filter" value="menos-jogados" {% if filtro == 'menos-jogados' %}checked{% endif %} onchange="this.form.submit()">
                         Menos Jogados
                     </label>
                 </div>

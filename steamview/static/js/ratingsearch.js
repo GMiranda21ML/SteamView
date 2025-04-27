@@ -17,7 +17,8 @@ async function fetchGames() {
     data.games.forEach((game, index) => {
       const card = document.createElement('div');
       card.classList.add('game-card');
-      card.style.animation = "fadeIn 0.5s ease";  // Adiciona animação leve
+      card.style.animation = "fadeIn 0.5s ease"; 
+
       card.innerHTML = `
         <a href="/jogo/${encodeURIComponent(game.name)}" style="text-decoration: none; color: inherit;">
           <div class="ranking-container">
@@ -33,6 +34,9 @@ async function fetchGames() {
           </div>
         </a>
       `;
+      
+      console.log('Card criado:', card);
+
       container.appendChild(card);
     });
 
@@ -44,11 +48,11 @@ async function fetchGames() {
   loading = false;
 }
 
-// Primeira chamada automática
-fetchGames();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchGames();
 
-// Botão "Mostrar mais"
-document.getElementById('load-more').addEventListener('click', fetchGames);
-
-card.style.animation = "fadeIn 0.5s ease";  
-
+  const loadMoreButton = document.getElementById('load-more');
+  if (loadMoreButton) {
+    loadMoreButton.addEventListener('click', fetchGames);
+  }
+});

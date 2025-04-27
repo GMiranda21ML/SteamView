@@ -7,17 +7,19 @@
         <nav>
             <ul>
                 <li>
-                    <a href = "{% url 'searchBar' %}">Search Bar</a>
+                    <a href="{% url 'searchBar' %}">Search Bar</a>
                 <li>
-                    <a href ="{% url 'ratingSearchPage' %}">Ratings</a>
+                    <a class="ratings" href="{% url 'ratingSearchPage' %}">Ratings</a>
                 </li>
                 <li>
-                    <a href="{% url 'maisJogados' %}">TOP20 do Mês</a>
+                    <a class="maisJogados" href="{% url 'maisJogados' %}">TOP20 do Mês</a>
                 </li>
                 <li>
-                    <a href="{% url 'maisJogadosHist' %}">Mais Jogados</a>
+                    <a class="maisJogadosHist" href="{% url 'maisJogadosHist' %}">Mais Jogados</a>
                 </li>
-                <li><a href="{% url 'lancamentos' %}">Lançamentos</a></li>
+                <li>
+                    <a href="{% url 'lancamentos' %}">Lançamentos</a>
+                </li>
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
