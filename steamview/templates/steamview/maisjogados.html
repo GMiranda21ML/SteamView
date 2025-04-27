@@ -5,8 +5,29 @@
 
 {% block content %}
 <main class="login">
+    
     <div class="maisjogados-container">
         <h1>Top 20 Jogos Mais Jogados do Mês</h1>
+        <div class="main-content" style="
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            width: 100%;
+            margin-left:-300px;
+        ">
+            <div class="filter-options" style="
+                flex-shrink: 0;
+                width: 160px;]
+            ">
+                <label>
+                    <input type="radio" name="filter" value="mais-jogados" >
+                    Mais Jogados
+                </label><br>
+                <label>
+                    <input type="radio" name="filter" value="menos-jogados">
+                    Menos Jogados
+                </label>
+            </div>
         <div class="games-grid">
             {% for jogo in jogos %}
                 <div class="game-card {% if forloop.counter <= 3 %}top-three{% endif %}">
