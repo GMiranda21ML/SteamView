@@ -8,39 +8,33 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 30px;
-        background-color: rgba(27, 40, 56, 0.75);
+        padding: 40px;
+        background-color: rgba(27, 40, 56, 0.9);
         backdrop-filter: blur(8px);
         border: 1px solid rgba(102, 192, 244, 0.2);
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(102, 192, 244, 0.2);
-        width: 800px;
-        margin: 80px auto;
+        width: 600px;
+        margin: 120px auto;
         flex-direction: column;
     ">
         <h1 style="
-            margin-bottom: 25px;
-            font-size: 28px;
+            margin-bottom: 30px;
+            font-size: 32px;
             text-align: center;
             font-family: 'Bungee', cursive;
             color: #ffffff;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         ">SEARCH FOR ANY GAME</h1>
         
-        <div style="
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-        ">
+        <form style="width: 100%;">
             <div class="search-container" style="
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                background-color: rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.4);
                 border: 1px solid rgba(102, 192, 244, 0.3);
                 border-radius: 8px;
-                padding: 15px 20px;     /* Aumentado padding */
+                padding: 0 10px;
                 width: 100%;
             ">
                 <input type="text" name="nome" placeholder="Search your game..." required style="
@@ -48,23 +42,27 @@
                     color: white;
                     border: none;
                     outline: none;
-                    font-size: 18px;    /* Aumentado fonte */
-                    width: calc(100% - 40px);
+                    font-size: 18px;
+                    width: 100%;
                     font-family: 'Roboto', sans-serif;
-                    height: 45px;       /* Aumentado altura */
+                    height: 50px;
+                    padding: 0 10px;
                 ">
                 <button class="search-button" type="submit" style="
                     background: transparent;
                     border: none;
                     cursor: pointer;
-                    padding: 0 8px;
-                    transition: transform 0.2s ease;
-                    margin-left: 650px;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    width: 40px;
                 ">
                     <img src="{% static 'img/search.png' %}" alt="Search" style="width: 24px; height: 24px;">
                 </button>
             </div>
-        </div>
+        </form>
     </div>
 </main>
 {% endblock %}
