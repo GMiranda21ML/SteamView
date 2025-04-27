@@ -5,44 +5,66 @@
 {% block content %}
 <main class="login">
     <div class="search-wrapper" style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 48px;  <!-- Increased padding -->
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(33, 18, 173, 0.35);
-    width: fit-content;
-    margin: 0 auto;
-    flex-direction: column;
-    min-width: 600px;  <!-- Added minimum width -->
-    margin-top: 100px;  <!-- Added top margin -->
-">
-    <h1 style="margin-bottom: 24px; font-size: 32px; text-align: center; font-family: 'Special Gothic Expanded One', sans-serif;">SEARCH FOR ANY GAME</h1>
-    <form action="{% url 'searchBar' %}" method="get" style="display: flex;">
-        <div class="search-container" style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        background-color: rgba(27, 40, 56, 0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(102, 192, 244, 0.2);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(102, 192, 244, 0.2);
+        width: 800px;
+        margin: 80px auto;
+        flex-direction: column;
+    ">
+        <h1 style="
+            margin-bottom: 25px;
+            font-size: 28px;
+            text-align: center;
+            font-family: 'Bungee', cursive;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        ">SEARCH FOR ANY GAME</h1>
+        
+        <div style="
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 8px 12px;
+            gap: 15px;
+            width: 100%;
         ">
-            <input type="text" name="nome" placeholder="Search your game..." required style="
-                background: transparent;
-                color: white;
-                border: none;
-                outline: none;
-                font-size: 16px;
-                width: 450px;
+            <div class="search-container" style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(102, 192, 244, 0.3);
+                border-radius: 8px;
+                padding: 15px 20px;     /* Aumentado padding */
+                width: 100%;
             ">
-            <button class="search-button" type="submit" style="background: transparent; border: none;">
-                <img src="{% static 'img/search.png' %}" alt="Search" style="width: 20px; height: 20px;">
-            </button>
+                <input type="text" name="nome" placeholder="Search your game..." required style="
+                    background: transparent;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    font-size: 18px;    /* Aumentado fonte */
+                    width: calc(100% - 40px);
+                    font-family: 'Roboto', sans-serif;
+                    height: 45px;       /* Aumentado altura */
+                ">
+                <button class="search-button" type="submit" style="
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0 8px;
+                    transition: transform 0.2s ease;
+                    margin-left: 650px;
+                ">
+                    <img src="{% static 'img/search.png' %}" alt="Search" style="width: 24px; height: 24px;">
+                </button>
+            </div>
         </div>
-    </form>
-</div>
-
+    </div>
 </main>
 {% endblock %}
