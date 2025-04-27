@@ -627,6 +627,19 @@ a {
     transform-origin: center;
 }
 
+.game-cardJogados a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.game-cardJogados .game-info h3,
+.game-cardJogados .game-info p {
+    color: #ffffff;
+}
+
+.game-cardJogados a:hover {
+    color: inherit;
+}
 .game-cardJogados:hover {
     transform: translateY(-10px) scale(1.03);
     border-color: #2b747a;
@@ -671,11 +684,13 @@ a {
 .maisjogados-container h3 {
     font-size: 22px;  
     margin-bottom: 15px;
+    color: #ffffff;
 }
 
 .maisjogados-container p {
     font-size: 18px;  
     margin: 8px 0;
+    color: #ffffff;
 }
 
 

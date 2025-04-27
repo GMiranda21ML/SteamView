@@ -25,3 +25,21 @@ class MaisJogados(models.Model):
 
     def __str__(self):
         return self.name
+
+class MaisJogadosHist(models.Model):
+    name = models.CharField(max_length=150)
+    rating = models.CharField(max_length=15)
+    released = models.CharField(max_length=15)
+    image = models.URLField()
+
+    def __str__(self):
+        return self.name
+
+class MenosJogadosHist(models.Model):
+    name = models.CharField(max_length=150)
+    rating = models.CharField(max_length=15)
+    released = models.CharField(max_length=15)
+    image = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.name

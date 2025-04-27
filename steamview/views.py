@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos, HistoricoPesquisa, MaisJogados
+from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
@@ -288,5 +288,59 @@ def maisJogados(request):
     }
     return render(request, "steamview/maisjogados.html", context)
 
+
 def maisJogadosHist(request):
-    return render(request, 'steamview/maisJogadosHist.html')
+    data_inicio = '2015-01-01'
+    data_fim = '2025-04-26'
+    filtro = request.GET.get('filter', 'mais-jogados') 
+
+    jogos = []
+    page = 1
+
+    if filtro == 'mais-jogados':
+        ordering = '-added'
+    elif filtro == 'menos-jogados':
+        ordering = 'added'
+
+    while len(jogos) < 100:
+        url = f"https://api.rawg.io/api/games?dates={data_inicio},{data_fim}&ordering={ordering}&key={API_KEY}&page_size=20&page={page}"
+        response = requests.get(url)
+        data = response.json()
+
+        for jogo in data.get('results', []):
+            jogos.append({
+                "nome": jogo.get('name'),
+                "imagem": jogo.get('background_image'),
+                "rating": jogo.get('rating'),
+                "lancamento": jogo.get('released')
+            })
+
+            if filtro == "mais-jogados":
+                if not MaisJogadosHist.objects.filter(name=jogo.get('name')).exists():
+                    MaisJogadosHist.objects.create(
+                        name=jogo.get('name'),
+                        rating=jogo.get('rating'),
+                        released=jogo.get('released'),
+                        image=jogo.get('background_image'),
+                    )
+            elif filtro == "menos-jogados":
+                if not MenosJogadosHist.objects.filter(name=jogo.get('name')).exists():
+                    image_url = jogo.get('background_image')
+                    if not image_url:
+                        image_url = 'https://via.placeholder.com/150'
+
+                    MenosJogadosHist.objects.create(
+                        name=jogo.get('name'),
+                        rating=jogo.get('rating'),
+                        released=jogo.get('released'),
+                        image=image_url,
+                    )
+
+        page += 1
+
+        if len(data.get('results', [])) < 20:
+            break
+
+    jogos = jogos[:100]
+
+    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})        

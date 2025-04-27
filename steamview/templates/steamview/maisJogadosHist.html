@@ -8,91 +8,32 @@
         <h1 class="maisJogadosHist-title">Jogos mais e menos Jogados</h1>
         
         <div class="main-content">
-            <div class="filter-options">
-                <label>
-                    <input type="radio" name="filter" value="mais-jogados" checked>
-                    Mais Jogados
-                </label><br>
-                <label>
-                    <input type="radio" name="filter" value="menos-jogados">
-                    Menos Jogados
-                </label>
-            </div>
+            <form method="get" action="{% url 'maisJogadosHist' %}">
+                <div class="filter-options">
+                    <label>
+                        <input type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        Mais Jogados
+                    </label><br>
+                    <label>
+                        <input type="radio" name="filter" value="menos-jogados" {% if filtro == 'menos-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        Menos Jogados
+                    </label>
+                </div>
+            </form>
 
             <div class="games-grid">
-                <!-- Caixas dos jogos -->
+                {% for jogo in jogos %}
                 <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
+                    <a href="{% url 'paginaJogo' nome=jogo.nome %}">
+                        <img src="{{ jogo.imagem }}" alt="{{ jogo.nome }}">
+                        <div class="game-info">
+                            <h3>{{ jogo.nome }}</h3>
+                            <p>Lançado em: {{ jogo.lancamento }}</p>
+                            <p>Nota: {{ jogo.rating }}</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
-                <div class="game-cardJogados">
-                    <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-                    <div class="game-info">
-                        <h3>Baldur's Gate 3</h3>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
