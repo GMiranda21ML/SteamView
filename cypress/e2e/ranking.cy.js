@@ -24,11 +24,11 @@ describe('Mostrar o Ranking do top 20 jogos mais jogados', () => {
     cy.logar(); 
   });
 
-  it('Visualizar o ranking dos jogos mais jogados em ordem crescente', () => {
+  it('Cenario 1: Visualizar o ranking dos jogos mais jogados em ordem crescente', () => {
     cy.ordemCrescente();
   });
 
-  it('Visualizar o ranking dos jogos mais jogados em ordem decrescente', () => {
+  it('Cenario 2: Visualizar o ranking dos jogos mais jogados em ordem decrescente', () => {
     cy.logar();
     cy.ordemDecrescente();
   });

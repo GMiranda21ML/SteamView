@@ -18,7 +18,7 @@ describe('Visualizar os lançamentos dos jogos', () => {
     cy.logar(); 
   });
 
-  it('Visualizar os lançamentos dos jogos com sucesso', () => {
+  it('Cenario 1: Visualizar os lançamentos dos jogos com sucesso', () => {
     cy.lancamentos();
   })
 })

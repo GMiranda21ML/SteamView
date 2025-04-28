@@ -24,11 +24,11 @@ describe('Visualizar os jogos mais e menos jogados/populares nos ultimos 10 anos
     cy.logar(); 
   });
 
-  it('Visualizar os jogos mais jogados/populares', () => {
+  it('Cenario 1: Visualizar os jogos mais jogados/populares', () => {
     cy.maisJogados();
   });
 
-  it('Visualizar os jogos menos jogados/populares', () => {
+  it('Cenario 2: Visualizar os jogos menos jogados/populares', () => {
     cy.logar();
     cy.menosJogados();
   });
