@@ -317,7 +317,7 @@ def maisJogados(request):
 def maisJogadosHist(request):
     data_inicio = '2015-01-01'
     data_fim = '2025-04-26'
-    filtro = request.GET.get('filter', 'mais-jogados') 
+    filtro = request.GET.get('filter', 'mais-jogados')
 
     jogos = []
     page = 1
@@ -333,11 +333,19 @@ def maisJogadosHist(request):
         data = response.json()
 
         for jogo in data.get('results', []):
+            lancamento_str = jogo.get('released')
+            lancamento = None
+            if lancamento_str:
+                try:
+                    lancamento = datetime.strptime(lancamento_str, '%Y-%m-%d').date()
+                except ValueError:
+                    pass
+
             jogos.append({
                 "nome": jogo.get('name'),
                 "imagem": jogo.get('background_image'),
                 "rating": jogo.get('rating'),
-                "lancamento": jogo.get('released')
+                "lancamento": lancamento
             })
 
             if filtro == "mais-jogados":
@@ -350,10 +358,7 @@ def maisJogadosHist(request):
                     )
             elif filtro == "menos-jogados":
                 if not MenosJogadosHist.objects.filter(name=jogo.get('name')).exists():
-                    image_url = jogo.get('background_image')
-                    if not image_url:
-                        image_url = 'https://via.placeholder.com/150'
-
+                    image_url = jogo.get('background_image') or 'https://via.placeholder.com/150'
                     MenosJogadosHist.objects.create(
                         name=jogo.get('name'),
                         rating=jogo.get('rating'),
@@ -368,4 +373,4 @@ def maisJogadosHist(request):
 
     jogos = jogos[:100]
 
-    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})        
+    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})    
