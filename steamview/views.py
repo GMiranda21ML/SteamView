@@ -59,7 +59,7 @@ def lancamentos_recentes(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    jogos_query = Jogos.objects.filter(released_date__isnull=False).order_by('-released_date')[:100] # ver para mudar depois de 100 para 50, VOCE SABERÁ O PQ
+    jogos_query = Jogos.objects.filter(released_date__isnull=False).order_by('-released_date')[:50] # ver para mudar depois de 100 para 50, VOCE SABERÁ O PQ
 
     jogos = []
     for jogo in jogos_query:
