@@ -80,7 +80,7 @@ def lancamentos_recentes(request):
 def importar_jogos_recentes():
     page = 1
     total_importados = 0
-    data_inicio = "2020-01-01"
+    data_inicio = "2024-01-01"
     data_fim = "2025-12-31"
 
     while True:
@@ -191,7 +191,13 @@ def remover_duplicatas():
 
 def api_jogos(request):
     page_number = int(request.GET.get("page", 1))
-    all_games = Jogos.objects.all().order_by('-rating')
+    order = request.GET.get('order', 'desc')
+
+    if order == 'asc':
+        all_games = Jogos.objects.all().order_by('rating')  # Menor para maior
+    else:
+        all_games = Jogos.objects.all().order_by('-rating')  # Maior para menor
+
 
     paginator = Paginator(all_games, 10)  # 6 por página
     try:
