@@ -24,7 +24,22 @@
   padding: 0 10px;
 }
 
+#invert-order {
+  background-color: #00bfff;
+  color: #ffffff;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
 
+#invert-order:hover {
+  background-color: #0099cc;
+}
 
 #load-more {
   background-color: #00bfff;

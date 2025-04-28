@@ -1,23 +1,31 @@
 let page = 1;
 let loading = false;
+let order = 'desc'; // Começa do melhor para o pior
 
-async function fetchGames() {
+async function fetchGames(reset = false) {
   if (loading) return;
   loading = true;
 
   try {
-    const response = await fetch(`/ratingsearch/api/?page=${page}`);
+    if (reset) {
+      page = 1;
+      document.getElementById('games-container').innerHTML = ''; // limpa os cards antigos
+    }
+
+    const response = await fetch(`/ratingsearch/api/?page=${page}&order=${order}`);
     const data = await response.json();
     const container = document.getElementById('games-container');
 
     if (!data.has_next || data.games.length === 0) {
       document.getElementById('load-more').style.display = 'none';
+    } else {
+      document.getElementById('load-more').style.display = 'block';
     }
 
     data.games.forEach((game, index) => {
       const card = document.createElement('div');
       card.classList.add('game-card');
-      card.style.animation = "fadeIn 0.5s ease"; 
+      card.style.animation = "fadeIn 0.5s ease";
 
       card.innerHTML = `
         <a href="/jogo/${encodeURIComponent(game.name)}" style="text-decoration: none; color: inherit;">
@@ -34,13 +42,11 @@ async function fetchGames() {
           </div>
         </a>
       `;
-      
-      console.log('Card criado:', card);
 
       container.appendChild(card);
     });
 
-    page += 1;
+    page += 1; // só incrementa depois de adicionar os jogos
   } catch (error) {
     console.error('Erro ao buscar jogos:', error);
   }
@@ -53,6 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loadMoreButton = document.getElementById('load-more');
   if (loadMoreButton) {
-    loadMoreButton.addEventListener('click', fetchGames);
+    loadMoreButton.addEventListener('click', () => {
+      fetchGames();
+    });
+  }
+
+  const invertButton = document.getElementById('invert-order');
+  if (invertButton) {
+    invertButton.addEventListener('click', () => {
+      order = (order === 'desc') ? 'asc' : 'desc'; // Troca entre asc e desc
+      page = 1; // Resetar página
+      fetchGames(true); // Limpa jogos antigos e busca de novo
+    });
   }
 });
