@@ -1,108 +1,33 @@
 {% extends "shared/base.html" %}
-
 {% load static %}
 {% load socialaccount %}
 
 {% block content %}
 <main>
-    <h1 class="page-title">Lançamentos Recentes </h1>
-    
+    <h1 class="page-title">Lançamentos Recentes</h1>
+
     <div class="games-grid">
-        <div class="game-card">
-            <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="Baldur's Gate 3">
-            <div class="game-info">
-                <h3>Baldur's Gate 3</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.95</p>
-                    <p class="game-price">R$ 199,99</p>
+        {% for jogo in jogos %}
+            <div class="game-card">
+                <img src="{{ jogo.imagem }}" alt="{{ jogo.nome }}">
+                <div class="game-info">
+                    <h3>{{ jogo.nome }}</h3>
+                    <div class="game-details">
+                        <p class="game-rating">
+                            Nota: {{ jogo.rating }}
+                        </p>
+                        <p class="game-price">
+                            {{ jogo.preco }}
+                        </p>
+                        <p class="game-release-date">
+                            Lançado em: {{ jogo.lancamento|date:"d/m/Y" }}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="game-card">
-            <img src="{% static 'img/starfield.jpg' %}" alt="Starfield">
-            <div class="game-info">
-                <h3>Starfield</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.82</p>
-                    <p class="game-price">R$ 299,99</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="{% static 'img/lies-of-p.jpg' %}" alt="Lies of P">
-            <div class="game-info">
-                <h3>Lies of P</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.88</p>
-                    <p class="game-price">R$ 249,99</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="{% static 'img/expedition-33.jpg' %}" alt="Expedition 33">
-            <div class="game-info">
-                <h3>Expedition 33</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.93</p>
-                    <p class="game-price">R$ 199,00</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="{% static 'img/the-Elder-Scrolls-IV-Oblivion-Remastered.jpg' %}" alt="The Elder Scrolls IV Oblivion">
-            <div class="game-info">
-                <h3>The Elder Scrolls IV Oblivion Remastered</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.82</p>
-                    <p class="game-price">R$ 264,90</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="{% static 'img/the-first-berserker-khazan].jpg' %}" alt="The First Berserker Khazan">
-            <div class="game-info">
-                <h3>The First Berserker Khazan</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.90</p>
-                    <p class="game-price">R$ 299,90</p>
-                </div>
-            </div>
-        </div>
-        <div class="game-card">
-            <img src="{% static 'img/the-first-berserker-khazan].jpg' %}" alt="The First Berserker Khazan">
-            <div class="game-info">
-                <h3>The First Berserker Khazan</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.90</p>
-                    <p class="game-price">R$ 299,90</p>
-                </div>
-            </div>
-        </div>        
-        <div class="game-card">
-            <img src="{% static 'img/the-first-berserker-khazan].jpg' %}" alt="The First Berserker Khazan">
-            <div class="game-info">
-                <h3>The First Berserker Khazan</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.90</p>
-                    <p class="game-price">R$ 299,90</p>
-                </div>
-            </div>
-        </div>        
-        <div class="game-card">
-            <img src="{% static 'img/the-first-berserker-khazan].jpg' %}" alt="The First Berserker Khazan">
-            <div class="game-info">
-                <h3>The First Berserker Khazan</h3>
-                <div class="game-details">
-                    <p class="game-rating">Nota: 4.90</p>
-                    <p class="game-price">R$ 299,90</p>
-                </div>
-            </div>
-        </div>
+        {% empty %}
+            <p>Nenhum jogo encontrado.</p>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

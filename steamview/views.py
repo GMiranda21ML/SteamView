@@ -9,6 +9,7 @@ from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, Meno
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
+from datetime import datetime, timedelta
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -53,58 +54,80 @@ def buscarPrecoSteam(game_name):
                         return data[str(app_id)]["data"].get("price_overview", {}).get("final_formatted", "Preço não disponível")
     return "Preço não disponível"
 
-def importar_jogos():
-    nomes = [
-        "Hollow Knight",
-        "Stardew Valley",
-        "Celeste",
-        "The Witcher 3: Wild Hunt",
-        "Red Dead Redemption 2",
-        "Portal 2",
-        "Terraria",
-        "Hades",
-        "Undertale",
-        "Bioshock Infinite",
-        "Cuphead",
-        "It Takes Two",
-        "Don't Starve",
-        "Dark Souls III",
-        "Sekiro: Shadows Die Twice",
-        "Slay the Spire",
-        "Subnautica",
-        "Dead Cells",
-        "Outer Wilds",
-        "Hogwarts Legacy"
-    ]
+@csrf_exempt
+def lancamentos_recentes(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
 
-    for nome in nomes:
-        if Jogos.objects.filter(name__iexact=nome).exists():
-            print(f"{nome} já está no banco.")
-            continue
+    jogos_query = Jogos.objects.filter(released_date__isnull=False).order_by('-released_date')[:12]
 
-        game = buscarJogoPorNome(nome)
-        if game:
-            game_id = game.get("id")
-            detalhes = buscarDetalhesDoJogo(game_id)
-            preco = buscarPrecoSteam(nome)
+    jogos = []
+    for jogo in jogos_query:
+        jogos.append({
+            "nome": jogo.name,
+            "imagem": jogo.image if jogo.image else 'https://via.placeholder.com/300x400?text=Sem+Imagem',
+            "rating": jogo.rating,
+            "preco": jogo.price,
+            "lancamento": jogo.released_date
+        })
 
-            if detalhes:
-                descricao_html = detalhes.get("description", "Descrição não disponível.")
-                descricao_limpa = BeautifulSoup(descricao_html, "html.parser").get_text()
+    context = {
+        "jogos": jogos
+    }
 
-                novo_jogo = Jogos(
-                    name = detalhes.get("name", "N/A"),
-                    description = descricao_limpa,
-                    rating = detalhes.get("rating", "0.0"),
-                    image = detalhes.get("background_image", ""),
-                    price = preco
-                )
-                novo_jogo.save()
-                print(f"✅ {nome} importado com sucesso.")
-            else:
-                print(f"❌ Detalhes não encontrados para {nome}")
-        else:
-            print(f"❌ Jogo não encontrado: {nome}")
+    return render(request, 'steamview/lancamentos.html', context)
+
+def importar_jogos_recentes():
+    page = 1
+    total_importados = 0
+    data_inicio = "2020-01-01"
+    data_fim = "2025-12-31"
+
+    while True:
+        url = f"https://api.rawg.io/api/games?dates={data_inicio},{data_fim}&ordering=-released&page_size=40&page={page}&key={API_KEY}"
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            print(f"Erro na página {page}: {response.status_code}")
+            break
+
+        data = response.json()
+        results = data.get('results', [])
+
+        if not results:
+            break
+
+        for game in results:
+            nome = game.get('name')
+            released_date = game.get('released')
+            imagem = game.get('background_image') or 'https://via.placeholder.com/300x400?text=Sem+Imagem'
+            rating = game.get('rating', 0.0)
+
+            if not nome or not released_date:
+                continue
+
+            if Jogos.objects.filter(name__iexact=nome).exists():
+                print(f"🔵 {nome} já está no banco. Pulando...")
+                continue
+
+            descricao = game.get('description_raw') or "Descrição não disponível."
+
+            novo_jogo = Jogos(
+                name=nome,
+                description=descricao,
+                rating=rating,
+                image=imagem,
+                price="Preço não disponível",
+                released_date=released_date
+            )
+            novo_jogo.save()
+            total_importados += 1
+
+            print(f"✅ {nome} importado.")
+
+        page += 1
+
+    print(f"Importação finalizada. Total de jogos importados: {total_importados}")
 
 # view da paginaJogo
 @csrf_exempt
