@@ -33,6 +33,13 @@ Cypress.Commands.add('telaMaisJogados', () => {
   cy.wait(2000);
 });
 
+Cypress.Commands.add('lancamentos', () => {
+  cy.visit('http://127.0.0.1:8000/');
+  cy.wait(1000);
+  cy.get('.lancamentos').click();
+  cy.get('.games-grid > :nth-child(3)').click();
+});
+
 describe('Poder visualizar detalhes do jogo', () => {
   before(() => {
     cy.logar(); 
@@ -55,6 +62,11 @@ describe('Poder visualizar detalhes do jogo', () => {
   it('visualizar jogo pela tela de mais jogados', () => {
     cy.logar();
     cy.telaMaisJogados();
+  });
+
+  it('visualizar jogo pela tela de mais lançamentos', () => {
+    cy.logar();
+    cy.lancamentos();
   });
 
 

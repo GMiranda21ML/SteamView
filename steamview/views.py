@@ -59,7 +59,7 @@ def lancamentos_recentes(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    jogos_query = Jogos.objects.filter(released_date__isnull=False).order_by('-released_date')[:12]
+    jogos_query = Jogos.objects.filter(released_date__isnull=False).order_by('-released_date')[:100] # ver para mudar depois de 100 para 50, VOCE SABERÁ O PQ
 
     jogos = []
     for jogo in jogos_query:
@@ -246,10 +246,6 @@ def searchBar(request):
             return redirect("paginaJogo", nome=nome)
 
     return render(request, "steamview/searchbar.html")
-
-
-def lancamentos(request):
-    return render(request, 'steamview/lancamentos.html')
 
 
 def maisJogados(request):
