@@ -5,9 +5,20 @@ Cypress.Commands.add('logar', () => {
   cy.get('button').click();                  
 });
 
-Cypress.Commands.add('visualizar', () => {
+Cypress.Commands.add('visualizarMelhores', () => {
   cy.visit('http://127.0.0.1:8000/');       
+  cy.wait(1000);
   cy.get('.ratings').click();   
+  cy.wait(1000);
+  cy.get('#load-more').click();                  
+});
+
+Cypress.Commands.add('visualizarPiores', () => {
+  cy.visit('http://127.0.0.1:8000/');       
+  cy.wait(1000);
+  cy.get('.ratings').click();   
+  cy.wait(1000);
+  cy.get('#invert-order').click();                  
   cy.wait(1000);
   cy.get('#load-more').click();                  
 });
@@ -21,9 +32,16 @@ describe('Mostrar as avaliações dos jogos', () => {
   before(() => {
     cy.logar();  
   });
-
-  it('Visualizar as avaliações dos jogos', () => {
-    cy.visualizar();  
+  
+  it('Visualizar as melhores notas/avaliações dos jogos', () => {
+    cy.visualizarMelhores();  
   });
+  
+  it('Visualizar as piores notas/avaliações dos jogos', () => {
+    cy.logar();  
+    cy.visualizarPiores();  
+  });
+
+
 
 });
