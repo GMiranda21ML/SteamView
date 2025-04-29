@@ -1,37 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <header class="steam-header">
-        <div class="container">
-            <h1>STEAMVIEW</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{% url 'searchBar' %}">Search Bar</a>
-                    </li>
-                    <li>
-                        <a class="ratings" href="{% url 'ratingSearchPage' %}">Ratings</a>
-                    </li>
-                    <li>
-                        <a class="maisJogados" href="{% url 'maisJogados' %}">TOP20 do Mês</a>
-                    </li>
-                    <li>
-                        <a class="maisJogadosHist" href="{% url 'maisJogadosHist' %}">Mais Jogados</a>
-                    </li>
-                    <li>
-                        <a class="lancamentos" href="{% url 'lancamentos_recentes' %}">Lançamentos</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+{% extends "shared/base.html" %}
 
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<body>
     <main>
         <div class="container">
             <h1>Hardware Configuration</h1>
@@ -88,3 +61,4 @@
     </script>
 </body>
 </html>
+{% endblock %}

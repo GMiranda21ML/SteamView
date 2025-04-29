@@ -373,4 +373,7 @@ def maisJogadosHist(request):
 
     jogos = jogos[:100]
 
-    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})    
+    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})
+
+def configHardware(request):
+    return render(request,'steamview/hardware.html')
