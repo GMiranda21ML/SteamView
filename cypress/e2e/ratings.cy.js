@@ -6,21 +6,19 @@ Cypress.Commands.add('logar', () => {
 });
 
 Cypress.Commands.add('visualizarMelhores', () => {
-  cy.visit('http://127.0.0.1:8000/');       
-  cy.wait(1000);
-  cy.get('.ratings').click();   
-  cy.wait(1000);
-  cy.get('#load-more').click();                  
+  cy.visit('http://127.0.0.1:8000/'); 
+  cy.wait(1000);      
+  cy.get('.ratings').should('be.visible').click();   
+  cy.wait(1000);        
 });
 
 Cypress.Commands.add('visualizarPiores', () => {
   cy.visit('http://127.0.0.1:8000/');       
   cy.wait(1000);
-  cy.get('.ratings').click();   
+  cy.get('.ratings').should('be.visible').click();   
   cy.wait(1000);
-  cy.get('#invert-order').click();                  
-  cy.wait(1000);
-  cy.get('#load-more').click();                  
+  cy.get('#invert-order').should('be.visible').click();  
+  cy.wait(1000);                            
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -41,7 +39,5 @@ describe('Mostrar as avaliações dos jogos', () => {
     cy.logar();  
     cy.visualizarPiores();  
   });
-
-
 
 });

@@ -37,7 +37,7 @@ Cypress.Commands.add('lancamentos', () => {
   cy.visit('http://127.0.0.1:8000/');
   cy.wait(1000);
   cy.get('.lancamentos').click();
-  cy.get('.games-grid > :nth-child(3)').click();
+  cy.get('.games-grid > :nth-child(1)').should('be.visible').click();
 });
 
 describe('Poder visualizar detalhes do jogo', () => {
@@ -68,6 +68,5 @@ describe('Poder visualizar detalhes do jogo', () => {
     cy.logar();
     cy.lancamentos();
   });
-
 
 })
