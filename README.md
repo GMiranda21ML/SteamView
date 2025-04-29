@@ -92,7 +92,6 @@ O objetivo desta segunda sprint é começar a fazer o projeto de verdade, implem
 
 
 
-
 ![RatingJogos](img/Ratings.png)
 
 # Jira
