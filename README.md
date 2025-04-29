@@ -234,7 +234,7 @@ Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades
     <a href="https://youtu.be/d8GGJhNQp74">
         <img src="https://img.shields.io/badge/Cypress-6E40C9?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
     </a>
-    <a href=" ">
+    <a href="https://youtu.be/xRUsTvIcS2A">
         <img src="https://img.shields.io/badge/CI/CD-1E90FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD">
     </a>
     <a href="https://youtu.be/Mr5kWbItk0w">
