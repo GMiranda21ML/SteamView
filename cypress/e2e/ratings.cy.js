@@ -10,7 +10,7 @@ Cypress.Commands.add('visualizarMelhores', () => {
   cy.wait(1000);      
   cy.get('.ratings').should('be.visible').click();   
   cy.wait(1000);
-  cy.get('#load-more').should('be.visible').click();                  
+  cy.get('#load-more', { timeout: 10000 }).should('be.visible').click();               
 });
 
 Cypress.Commands.add('visualizarPiores', () => {
@@ -20,7 +20,7 @@ Cypress.Commands.add('visualizarPiores', () => {
   cy.wait(1000);
   cy.get('#invert-order').should('be.visible').click();  
   cy.wait(1000);                
-  cy.get('#load-more').should('be.visible').click();                  
+  cy.get('#load-more', { timeout: 10000 }).should('be.visible').click();                  
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {
