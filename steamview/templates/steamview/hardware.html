@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <header class="steam-header">
+        <div class="container">
+            <h1>STEAMVIEW</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'searchBar' %}">Search Bar</a>
+                    </li>
+                    <li>
+                        <a class="ratings" href="{% url 'ratingSearchPage' %}">Ratings</a>
+                    </li>
+                    <li>
+                        <a class="maisJogados" href="{% url 'maisJogados' %}">TOP20 do Mês</a>
+                    </li>
+                    <li>
+                        <a class="maisJogadosHist" href="{% url 'maisJogadosHist' %}">Mais Jogados</a>
+                    </li>
+                    <li>
+                        <a class="lancamentos" href="{% url 'lancamentos_recentes' %}">Lançamentos</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Hardware Configuration</h1>
+            <form id="hardwareForm">
+                <div class="hardware-grid">
+                    <div class="form-group">
+                        <label for="processor">Processor (CPU)</label>
+                        <input type="text" id="processor" placeholder="e.g., Intel Core i7-12700K">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="graphics">Graphics Card (GPU)</label>
+                        <input type="text" id="graphics" placeholder="e.g., NVIDIA RTX 3080">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ram">RAM Memory</label>
+                        <input type="text" id="ram" placeholder="e.g., 16GB DDR4 3200MHz">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storage">Storage</label>
+                        <input type="text" id="storage" placeholder="e.g., 1TB NVMe SSD">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motherboard">Motherboard</label>
+                        <input type="text" id="motherboard" placeholder="e.g., ASUS ROG STRIX Z690-E">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="powerSupply">Power Supply</label>
+                        <input type="text" id="powerSupply" placeholder="e.g., 850W 80+ Gold">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="case">Case</label>
+                        <input type="text" id="case" placeholder="e.g., Lian Li PC-O11 Dynamic">
+                    </div>
+                </div>
+
+                <button type="submit">Save Configuration</button>
+            </form>
+        </div>
+    </main>
+
+
+    <script>
+        document.getElementById('hardwareForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you can add the logic to save the configuration
+            alert('Configuration saved successfully!');
+        });
+    </script>
+</body>
+</html>
