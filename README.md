@@ -224,6 +224,21 @@ Menos jogados:
 
 ---
 
+# Jira
+
+
+Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos mais 3 histórias.Para acessá-lo, [clique aqui](https://steamviewfds.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiMjZiNDgyNDQxMGM4NGYzZGE2OWVmM2YyM2EyYjUwODYiLCJwIjoiaiJ9).
+
+BackLog:
+
+![Jira](img/backlogsprint3.png)
+
+Board:
+
+![Jira](img/painelSprint3.png)
+
+---
+
 # Screencast
 Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades, o processo de deploy, testes no Cypress, CI/CD e também o protótipo atualizado no Figma.
 
