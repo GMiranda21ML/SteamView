@@ -263,9 +263,9 @@ Closed:
 
 # Relatório de Programação
 
-Criamos também um novo documento detalhando como foram divididas as tarefas de desenvolvimento nesta entrega.
+Atualizamos o documento onde é detalhado como foram divididas as tarefas de desenvolvimento nesta entrega.
 
-[Link para o relatório](https://docs.google.com/document/d/12m2XFzkRy17p3EUFv_OUKe7jHG-UJNnWPP6ycm-w878/edit?usp=sharing)
+[Link para o relatório](https://docs.google.com/document/d/1kGRfZ-oWasivb5I1HcR4BfNv_ETWxWy5BHzKlodHNbM/edit?usp=sharing)
 
 ---
 
