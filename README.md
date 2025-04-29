@@ -160,6 +160,118 @@ Criamos um documento para relatar como foram dividas as tarefas entre o grupo.Pa
 
 ---
 
+<details>
+<summary>📝 TERCEIRA ENTREGA</summary>
+
+O objetivo desta terceira sprint foi expandir o SteamView, trazendo novas funcionalidades e melhorias gerais no sistema.
+
+
+# Histórias implementadas:
+
+
+## História 1: Visualizar o ranking dos 20 jogos mais jogados no mês
+
+- Cenário 1: Visualizar o top 20 dos jogos mais jogados em ordem decrescente
+  - Dado que o usuário está logado e deseja visualizar a ordem decrescente do top 20 dos jogos mais jogados;
+  - Quando seleciona a aba de top 20 dos jogos mais jogados e coloca em ordem decrescente;
+  - Então uma lista decrescente do top 20 dos jogos mais jogados aparecerá.
+
+- Cenário 2: Visualizar o top 20 dos jogos mais jogados em ordem crescente
+  - Dado que o usuário está logado e deseja visualizar a ordem decrescente do top 20 dos jogos mais jogados;
+  - Quando seleciona a aba do top 20 dos jogos mais jogados e coloca em ordem crescente ao invés de decrescente;
+  - Então uma lista crescente do top 20 dos jogos mais jogados aparecerá.
+
+Top 20 mais jogados do mês:
+
+![Top20Jogos](img/TOP20MAISJOGADOS.png)
+
+Top 20 menos jogados mês:
+
+![Top20Jogos](img/TOP20MENOSJOGADOS.png)
+---
+
+## História 2: Visualizar lançamentos populares
+
+- Cenário 1: Exibir jogos lançados recentemente e que estão com uma média alta de jogadores
+  - Dado que o usuário deseja visualizar lançamentos populares recentes;
+  - Quando ele seleciona a aba de “lançamentos”;
+  - Então o site exibirá uma lista de jogos lançados recentemente e ao lado do mesmo, aparecerá a média de jogadores.
+
+Lançamentos:
+
+![LancamentosPopulares](img/LANCAMENTOS.png)
+
+---
+
+## História 3: Visualizar jogos mais e menos jogados
+
+- Cenário 1: Exibição dos jogos mais vendidos
+  - Dado que o usuário deseja ver os jogos mais vendidos;
+  - Quando ele entra na seção de jogos mais/menos vendidos e seleciona o filtro de jogos mais vendidos;
+  - Então o site exibe os jogos mais jogados.
+
+- Cenário 2: Exibição dos jogos menos vendidos
+  - Dado que o usuário deseja ver os jogos menos vendidos;
+  - Quando ele entra na seção de jogos mais/menos vendidos e seleciona o filtro de jogos menos vendidos;
+  - Então o site exibe os jogos menos jogados.
+
+Mais jogados:
+
+![MaisMenosJogos](img/MAISJOGADOS.png)
+
+Menos jogados:
+
+![MaisMenosJogos](img/MENOSJOGADOS.png)
+
+---
+
+# Screencast
+Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades, o processo de deploy, testes no Cypress, CI/CD e também o protótipo atualizado no Figma.
+
+<div align="center">
+    <a href="https://youtu.be/Uf8vVWzHc9c">
+        <img src="https://img.shields.io/badge/Deploy-228B22?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy">
+    </a>
+    <a href="https://youtu.be/d8GGJhNQp74">
+        <img src="https://img.shields.io/badge/Cypress-6E40C9?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
+    </a>
+    <a href=" ">
+        <img src="https://img.shields.io/badge/CI/CD-1E90FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD">
+    </a>
+    <a href="https://youtu.be/Mr5kWbItk0w">
+        <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
+    </a>
+</div>
+
+---
+
+# Bugtracker
+
+Criamos uma nova seção de bug tracker para controle das falhas e melhorias aplicadas na nova sprint.
+
+
+Open:
+
+![Open](img/Open.png)
+
+
+Closed:
+
+![Closed](img/Closed.png)
+
+
+---
+
+# Relatório de Programação
+
+Criamos também um novo documento detalhando como foram divididas as tarefas de desenvolvimento nesta entrega.
+
+[Link para o relatório](https://docs.google.com/document/d/12m2XFzkRy17p3EUFv_OUKe7jHG-UJNnWPP6ycm-w878/edit?usp=sharing)
+
+---
+
+</details>
+
 ## 🫂 Integrantes
 | Matricula  | Nome                                  | Email da school    |
 | ---------- | ------------------------------------- | ------------------ |

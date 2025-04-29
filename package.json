@@ -1,5 +1,23 @@
 {
+  "name": "steamview",
+  "version": "1.0.0",
+  "description": "O SteamView é um software feito pelo framework Django, tem como objetivo ajudar jogadores que buscam analisar informações dos jogos da steam, como por exemplo, ver descontos em jogos, os jogos mais vendidos, os mais bem avaliados, requisitos de software, entre outros.",
+  "homepage": "https://github.com/GMiranda21ML/SteamView#readme",
+  "bugs": {
+    "url": "https://github.com/GMiranda21ML/SteamView/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GMiranda21ML/SteamView.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "devDependencies": {
-    "cypress": "^14.3.1"
+    "cypress": "^14.3.2"
   }
 }
