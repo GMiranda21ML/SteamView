@@ -182,11 +182,11 @@ O objetivo desta terceira sprint foi expandir o SteamView, trazendo novas funcio
 
 Top 20 mais jogados do mês:
 
-![Top20Jogos](img/TOP20MAISJOGADOS.png)
+![Top20Jogos](img/Top20maisjogados.png)
 
 Top 20 menos jogados mês:
 
-![Top20Jogos](img/TOP20MENOSJOGADOS.png)
+![Top20Jogos](img/Top20menosjogados.png)
 ---
 
 ## História 2: Visualizar lançamentos populares
@@ -198,7 +198,7 @@ Top 20 menos jogados mês:
 
 Lançamentos:
 
-![LancamentosPopulares](img/LANCAMENTOS.png)
+![LancamentosPopulares](img/Lancamentos.png)
 
 ---
 
@@ -216,11 +216,11 @@ Lançamentos:
 
 Mais jogados:
 
-![MaisMenosJogos](img/MAISJOGADOS.png)
+![Maisjogados](img/Maisjogados.png)
 
 Menos jogados:
 
-![MaisMenosJogos](img/MENOSJOGADOS.png)
+![Menosjogados](img/Menosjogados.png)
 
 ---
 
