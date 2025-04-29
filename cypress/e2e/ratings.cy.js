@@ -9,8 +9,7 @@ Cypress.Commands.add('visualizarMelhores', () => {
   cy.visit('http://127.0.0.1:8000/'); 
   cy.wait(1000);      
   cy.get('.ratings').should('be.visible').click();   
-  cy.wait(1000);
-  cy.get('#load-more', { timeout: 10000 }).should('be.visible').click();               
+  cy.wait(1000);        
 });
 
 Cypress.Commands.add('visualizarPiores', () => {
@@ -19,8 +18,7 @@ Cypress.Commands.add('visualizarPiores', () => {
   cy.get('.ratings').should('be.visible').click();   
   cy.wait(1000);
   cy.get('#invert-order').should('be.visible').click();  
-  cy.wait(1000);                
-  cy.get('#load-more', { timeout: 10000 }).should('be.visible').click();                  
+  cy.wait(1000);                            
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {
