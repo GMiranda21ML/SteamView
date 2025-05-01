@@ -231,7 +231,7 @@ Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o and
 
 BackLog:
 
-![Jira](img/backlogsprint3.png)
+![Jira](img/backlogSprint3.png)
 
 Board:
 
