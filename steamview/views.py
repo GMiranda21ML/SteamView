@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
 from datetime import datetime, timedelta
+import random
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -377,5 +378,17 @@ def maisJogadosHist(request):
 
 def configHardware(request):
     return render(request,'steamview/hardware.html')
+
+def verificarID():
+    while (True):
+        numeroAleatorio = random.randint(0, 10200)
+
+        try:
+            jogo = Jogos.objects.get(id=numeroAleatorio)
+            if jogo.rating >= 2.0:
+                return numeroAleatorio
+        except Jogos.DoesNotExist:
+            pass
+
 def jogoAleatorio(request):
     return render(request,'steamview/random.html')
