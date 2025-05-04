@@ -377,3 +377,5 @@ def maisJogadosHist(request):
 
 def configHardware(request):
     return render(request,'steamview/hardware.html')
+def jogoAleatorio(request):
+    return render(request,'steamview/random.html')

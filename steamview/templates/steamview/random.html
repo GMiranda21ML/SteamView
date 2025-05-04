@@ -1,0 +1,27 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+
+<main class="random-game-container">
+    <div class="random-button-container">
+        <button class="random-button">
+            PICK UP A RANDOM GAME
+        </button>
+    </div>
+
+    <div class="random-game-card">
+        <div class="ranking-number">#1</div>
+        <img src="{% static 'img\baldurs-gate-3.avif' %}" alt="GTA V">
+        <div class="random-game-info">
+            <h3 class="random-game-title">Baldurs gate 3</h3>
+            <div class="random-game-rating">
+                <span>Nota:</span>
+                <span class="rating-score">4.47</span>
+            </div>
+            <p class="random-game-price">Preço não disponível</p>
+        </div>
+    </div>
+</main>
+{% endblock %}
