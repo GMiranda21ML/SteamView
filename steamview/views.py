@@ -390,5 +390,18 @@ def verificarID():
         except Jogos.DoesNotExist:
             pass
 
+
 def jogoAleatorio(request):
-    return render(request,'steamview/random.html')
+    if request.method == 'POST':
+
+        novo_id = verificarID()
+
+        if novo_id is None:
+            return render(request, 'steamview/random.html')  
+
+        jogo = Jogos.objects.get(id=novo_id)
+
+        context = {"jogo": jogo}
+        return render(request, 'steamview/random.html', context)
+
+    return render(request, 'steamview/random.html', {})
