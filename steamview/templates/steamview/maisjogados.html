@@ -8,26 +8,20 @@
     
     <div class="maisjogados-container">
         <h1>Top 20 Jogos Mais Jogados do Mês</h1>
-        <div class="main-content" style="
-            display: flex;
-            gap: 20px;
-            justify-content: flex-start;
-            width: 100%;
-            margin-left:-300px;
-        ">
-            <div class="filter-options" style="
-                flex-shrink: 0;
-                width: 160px;]
-            ">
-                <label>
-                    <input class="normalOrderButton" id="normalOrderButton" type="radio" name="filter" value="mais-jogados" >
-                    Mais Jogados
-                </label><br>
-                <label>
-                    <input class="invertOrderButton" id="invertOrderButton" type="radio" name="filter" value="menos-jogados">
-                    Menos Jogados
-                </label>
-            </div>
+        <div class="main-content">
+            <form method="get" action="{% url 'maisJogadosHist' %}">
+                <div class="filter-options">
+                    <label>
+                        <input class="filterMais" type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        Mais Jogados
+                    </label><br>
+                    <label>
+                        <input class="filterMenos" type="radio" name="filter" value="menos-jogados" {% if filtro == 'menos-jogados' %}checked{% endif %} onchange="this.form.submit()">
+                        Menos Jogados
+                    </label>
+                </div>
+            </form>
+            
         <div class="games-grid">
             {% for jogo in jogos %}
                 <div class="game-card {% if forloop.counter <= 3 %}top-three{% endif %}">
