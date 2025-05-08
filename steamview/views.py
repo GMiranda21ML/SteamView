@@ -376,16 +376,13 @@ def maisJogadosHist(request):
 
     return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})
 
-def configHardware(request):
-    return render(request,'steamview/hardware.html')
-
 def verificarID():
     while (True):
         numeroAleatorio = random.randint(0, 10200)
 
         try:
             jogo = Jogos.objects.get(id=numeroAleatorio)
-            if jogo.rating >= 2.0:
+            if float(jogo.rating) >= 2.0:
                 return numeroAleatorio
         except Jogos.DoesNotExist:
             pass
@@ -405,3 +402,6 @@ def jogoAleatorio(request):
         return render(request, 'steamview/random.html', context)
 
     return render(request, 'steamview/random.html', {})
+
+def wishList(request):
+    return render(request, 'steamview/wishlist.html')
