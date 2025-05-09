@@ -7,7 +7,7 @@ Cypress.Commands.add('logar', () => {
 
 Cypress.Commands.add('pesquisar', (jogo) => {
   cy.visit('http://127.0.0.1:8000/');
-  cy.get('.search-bar').type(jogo);
+  cy.get('.search-bar1').type(jogo);
   cy.get('.search-button').click();
   cy.wait(2000);
 });

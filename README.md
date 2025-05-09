@@ -16,7 +16,7 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
 <summary>🔗 LINKS IMPORTANTES</summary>
 
 <div align="center">
-    <a href="https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiYmNlNzIxOWY4ZDA3NGFlMjg0MjM0YzQ1N2ZjYTVkOTEiLCJwIjoiaiJ9">
+    <a href="https://steamviewfds.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiMjZiNDgyNDQxMGM4NGYzZGE2OWVmM2YyM2EyYjUwODYiLCJwIjoiaiJ9">
         <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
     </a>
     <a href="https://docs.google.com/document/d/1S2g1G4RuujxoqrS3X8qtjB-jPXst8eDhbwKny189anE/edit?tab=t.0">
