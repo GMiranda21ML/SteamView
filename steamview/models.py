@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Jogos(models.Model):
@@ -44,3 +45,10 @@ class MenosJogadosHist(models.Model):
 
     def __str__(self):
         return self.name
+    
+class WishList(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wishlist")
+    games = models.ManyToManyField(Jogos, related_name="wishlist_by", blank=True)
+
+    def __str__(self):
+        return f"Wishlist de {self.user.username}"

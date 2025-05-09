@@ -1,75 +1,38 @@
 {% extends "shared/base.html" %}
-
 {% load static %}
 {% load socialaccount %}
 
-{% block content  %}
+{% block content %}
 <main>
     <div class="wishlist-container">
         <h1 class="wishlist-title">Minha Lista de Desejos</h1>
         <div class="wishlist-list">
-            <div class="wishlist-item">
-                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg" alt="Red Dead Redemption 2" class="wishlist-game-image">
-                <div class="wishlist-game-info">
-                    <h3>Red Dead Redemption 2</h3>
-                    <p class="wishlist-price">R$ 299,90</p>
-                </div>
-                <div class="wishlist-buttons">
-                    <button class="wishlist-remove">Remover</button>
-                    <p class="wishlist-date">Adicionado em 17/12/2023</p>
-                </div>
-            </div>
-            <div class="wishlist-list">
+            {% if games %}
+                {% for game in games %}
                 <div class="wishlist-item">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg" alt="Red Dead Redemption 2" class="wishlist-game-image">
+                    <img src="{{ game.image }}" alt="{{ game.name }}" class="wishlist-game-image">
                     <div class="wishlist-game-info">
-                        <h3>Red Dead Redemption 2</h3>
-                        <p class="wishlist-price">R$ 299,90</p>
+                        <h3>{{ game.name }}</h3>
+                        <p class="wishlist-price">{{ game.price }}</p>
                     </div>
                     <div class="wishlist-buttons">
-                        <button class="wishlist-remove">Remover</button>
-                        <p class="wishlist-date">Adicionado em 17/12/2023</p>
+                        <form method="post" action="{% url 'removerWishlist' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="game_id" value="{{ game.id }}">
+                            <button type="submit" class="wishlist-remove">Remover</button>
+                        </form>
+                        <p class="wishlist-date">Adicionado recentemente</p>
                     </div>
                 </div>
-            <div class="wishlist-list">
-                <div class="wishlist-item">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg" alt="Red Dead Redemption 2" class="wishlist-game-image">
-                    <div class="wishlist-game-info">
-                        <h3>Red Dead Redemption 2</h3>
-                        <p class="wishlist-price">R$ 299,90</p>
-                    </div>
-                    <div class="wishlist-buttons">
-                        <button class="wishlist-remove">Remover</button>
-                        <p class="wishlist-date">Adicionado em 17/12/2023</p>
-                    </div>
-                </div>
-            <div class="wishlist-list">
-                <div class="wishlist-item">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg" alt="Red Dead Redemption 2" class="wishlist-game-image">
-                    <div class="wishlist-game-info">
-                        <h3>Red Dead Redemption 2</h3>
-                        <p class="wishlist-price">R$ 299,90</p>
-                    </div>
-                    <div class="wishlist-buttons">
-                        <button class="wishlist-remove">Remover</button>
-                        <p class="wishlist-date">Adicionado em 17/12/2023</p>
-                    </div>
-                </div>
-            <div class="wishlist-item">
-                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg" alt="Cyberpunk 2077" class="wishlist-game-image">
-                <div class="wishlist-game-info">
-                    <h3>Cyberpunk 2077</h3>
-                    <p class="wishlist-price">R$ 199,90</p>
-                </div>
-                <div class="wishlist-buttons">
-                    <button class="wishlist-remove">Remover</button>
-                    <p class="wishlist-date">Adicionado em 17/12/2023</p>
-                </div>
-            </div>
+                {% endfor %}
+            {% else %}
+                <p>Você ainda não adicionou nenhum jogo à sua lista de desejos.</p>
+            {% endif %}
         </div>
     </div>
 </main>
-{% endblock  %}
+{% endblock %}
+
 {% block extra_scripts %}
 <link rel="stylesheet" href="{% static 'styles/wishlist.css' %}">
 {% endblock %}

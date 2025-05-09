@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist
+from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist, WishList
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
@@ -403,5 +403,44 @@ def jogoAleatorio(request):
 
     return render(request, 'steamview/random.html', {})
 
+
 def wishList(request):
-    return render(request, 'steamview/wishlist.html')
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    wishlist = WishList.objects.filter(user=request.user).first()
+    games = wishlist.games.all() if wishlist else []
+
+    context = {
+        'games': games
+    }
+
+    return render(request, 'steamview/wishlist.html', context)
+
+
+@csrf_exempt
+def adicionarWishlist(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    if request.method == "POST":
+        game_name = request.POST.get("game_name")
+
+        jogo = get_object_or_404(Jogos, name=game_name)
+
+        wishlist, created = WishList.objects.get_or_create(user=request.user)
+
+        wishlist.games.add(jogo)
+
+    return redirect("paginaJogo", nome=game_name)
+
+@csrf_exempt
+def removerWishlist(request):
+    if request.method == "POST" and request.user.is_authenticated:
+        game_id = request.POST.get("game_id")
+        jogo = get_object_or_404(Jogos, id=game_id)
+        wishlist = WishList.objects.filter(user=request.user).first()
+        if wishlist:
+            wishlist.games.remove(jogo)
+
+    return redirect('wishList')

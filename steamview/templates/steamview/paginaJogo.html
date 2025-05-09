@@ -10,10 +10,14 @@
         <div class="game-header">
             <img class="game-image" src="{{ gameInfo.image_url }}" alt="Capa do Jogo">
             <div class="adicionar-container">
-                <button class="adicionar-button">
-                    <img src="{% static 'img/carrinho.png' %}" alt="Adicionar" class="adicionar-icon">
-                    <span>Adicionar a wishlist</span>
-                </button>
+                <form method="post" action="{% url 'adicionarWishlist' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="game_name" value="{{ gameInfo.name }}">
+                    <button type="submit" class="adicionar-button">
+                        <img src="{% static 'img/carrinho.png' %}" alt="Adicionar" class="adicionar-icon">
+                        <span>Adicionar à wishlist</span>
+                    </button>
+                </form>
             </div>
         </div>
         <div class="game-info">
