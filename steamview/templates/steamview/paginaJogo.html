@@ -3,12 +3,20 @@
 {% load static %}
 {% load socialaccount %}
 
-{% block content  %}
+{% block content %}
 <main>
     <div class="container">
         {% if gameInfo %}
-        <img class="game-image" src="{{ gameInfo.image_url }}" alt="Capa do Jogo">
-        <div>
+        <div class="game-header">
+            <img class="game-image" src="{{ gameInfo.image_url }}" alt="Capa do Jogo">
+            <div class="adicionar-container">
+                <button class="adicionar-button">
+                    <img src="{% static 'img/carrinho.png' %}" alt="Adicionar" class="adicionar-icon">
+                    <span>Adicionar a wishlist</span>
+                </button>
+            </div>
+        </div>
+        <div class="game-info">
             <h2>SOBRE O JOGO - {{ gameInfo.name }}</h2>
             <p><strong>Nota:</strong> {{ gameInfo.rating }}🌟</p>
             <p>{{ gameInfo.description }}</p>
@@ -19,4 +27,5 @@
         {% endif %}
     </div>
 </main>
-{% endblock  %}
+{% endblock %} 
+                                                 
