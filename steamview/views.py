@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist, WishList
+from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist, WishList, WishListItem
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
@@ -409,10 +409,10 @@ def wishList(request):
         return redirect("login")
 
     wishlist = WishList.objects.filter(user=request.user).first()
-    games = wishlist.games.all() if wishlist else []
+    wishlist_items = WishListItem.objects.filter(wishlist=wishlist).select_related('game').order_by('added_at') if wishlist else []
 
     context = {
-        'games': games
+        'wishlist_items': wishlist_items
     }
 
     return render(request, 'steamview/wishlist.html', context)
@@ -420,17 +420,12 @@ def wishList(request):
 
 @csrf_exempt
 def adicionarWishlist(request):
-    if not request.user.is_authenticated:
-        return redirect("login")
-
     if request.method == "POST":
         game_name = request.POST.get("game_name")
-
         jogo = get_object_or_404(Jogos, name=game_name)
+        wishlist, _ = WishList.objects.get_or_create(user=request.user)
 
-        wishlist, created = WishList.objects.get_or_create(user=request.user)
-
-        wishlist.games.add(jogo)
+        WishListItem.objects.get_or_create(wishlist=wishlist, game=jogo)
 
     return redirect("paginaJogo", nome=game_name)
 

@@ -7,21 +7,21 @@
     <div class="wishlist-container">
         <h1 class="wishlist-title">Minha Lista de Desejos</h1>
         <div class="wishlist-list">
-            {% if games %}
-                {% for game in games %}
+            {% if wishlist_items %}
+                {% for item in wishlist_items %}
                 <div class="wishlist-item">
-                    <img src="{{ game.image }}" alt="{{ game.name }}" class="wishlist-game-image">
+                    <img src="{{ item.game.image }}" alt="{{ item.game.name }}" class="wishlist-game-image">
                     <div class="wishlist-game-info">
-                        <h3>{{ game.name }}</h3>
-                        <p class="wishlist-price">{{ game.price }}</p>
+                        <h3>{{ item.game.name }}</h3>
+                        <p class="wishlist-price">{{ item.game.price }}</p>
                     </div>
                     <div class="wishlist-buttons">
                         <form method="post" action="{% url 'removerWishlist' %}">
                             {% csrf_token %}
-                            <input type="hidden" name="game_id" value="{{ game.id }}">
+                            <input type="hidden" name="game_id" value="{{ item.game.id }}">
                             <button type="submit" class="wishlist-remove">Remover</button>
                         </form>
-                        <p class="wishlist-date">Adicionado recentemente</p>
+                        <p class="wishlist-date">Adicionado em {{ item.added_at|date:"d/m/Y H:i" }}</p>
                     </div>
                 </div>
                 {% endfor %}

@@ -52,3 +52,16 @@ class WishList(models.Model):
 
     def __str__(self):
         return f"Wishlist de {self.user.username}"
+
+
+class WishListItem(models.Model):
+    wishlist = models.ForeignKey(WishList, on_delete=models.CASCADE)
+    game = models.ForeignKey(Jogos, on_delete=models.CASCADE)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('wishlist', 'game')
+        ordering = ['-added_at']
+
+    def __str__(self):
+        return f"{self.game.name} na wishlist de {self.wishlist.user.username}"
