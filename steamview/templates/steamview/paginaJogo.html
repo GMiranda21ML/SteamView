@@ -10,7 +10,8 @@
         <div class="game-header">
             <img class="game-image" src="{{ gameInfo.image_url }}" alt="Capa do Jogo">
             <div class="adicionar-container">
-                <form method="post" action="{% url 'adicionarWishlist' %}">
+                {% if not ja_na_wishlist %}
+                    <form method="post" action="{% url 'adicionarWishlist' %}">
                     {% csrf_token %}
                     <input type="hidden" name="game_name" value="{{ gameInfo.name }}">
                     <button type="submit" class="adicionar-button">
@@ -18,6 +19,9 @@
                         <span>Adicionar à wishlist</span>
                     </button>
                 </form>
+                {% else %}
+                    <p>Este jogo já está na sua wishlist.</p>
+                {% endif %}
             </div>
         </div>
         <div class="game-info">
@@ -31,5 +35,4 @@
         {% endif %}
     </div>
 </main>
-{% endblock %} 
-                                                 
+{% endblock %}

@@ -141,6 +141,9 @@ def paginaJogo(request, nome):
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
+    jogo_obj = None
+    ja_na_wishlist = False
+
     if game:
         game_id = game.get("id")
         game_details = buscarDetalhesDoJogo(game_id)
@@ -150,31 +153,38 @@ def paginaJogo(request, nome):
             descricao_html = game_details.get("description", "Descrição não disponível.")
             descricao_limpa = BeautifulSoup(descricao_html, "html.parser").get_text()
 
+            nome_jogo = game_details.get("name", "N/A")
+
             gameInfo = {
-                "name": game_details.get("name", "N/A"),
+                "name": nome_jogo,
                 "description": descricao_limpa,
                 "rating": game_details.get("rating", "Nota não disponível"),
                 "image_url": game_details.get("background_image", "Imagem não disponível"),
                 "price": preco
             }
 
-            if not Jogos.objects.filter(name = game_details.get("name", "N/A")).exists():
-                jogosBanco = Jogos(
-                    name = game_details.get("name", "N/A"),
-                    description = descricao_limpa,
-                    rating = game_details.get("rating", "Nota não disponível"),
-                    image = game_details.get("background_image", "Imagem não disponível"),
-                    price =  preco
-                )
+            jogo_obj, created = Jogos.objects.get_or_create(
+                name=nome_jogo,
+                defaults={
+                    'description': descricao_limpa,
+                    'rating': game_details.get("rating", "Nota não disponível"),
+                    'image': game_details.get("background_image", "Imagem não disponível"),
+                    'price': preco
+                }
+            )
 
-                jogosBanco.save()
+            wishlist, created = WishList.objects.get_or_create(user=request.user)
+
+            ja_na_wishlist = WishListItem.objects.filter(wishlist=wishlist, game=jogo_obj).exists()
 
     context = {
         "gameInfo": gameInfo,
         "nome": nome,
+        "ja_na_wishlist": ja_na_wishlist
     }
 
     return render(request, "steamview/paginaJogo.html", context)
+
 
 def remover_duplicatas():
     nomes_vistos = set()
@@ -420,22 +430,34 @@ def wishList(request):
 
 @csrf_exempt
 def adicionarWishlist(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
     if request.method == "POST":
         game_name = request.POST.get("game_name")
-        jogo = get_object_or_404(Jogos, name=game_name)
-        wishlist, _ = WishList.objects.get_or_create(user=request.user)
+        if game_name:
+            jogo = get_object_or_404(Jogos, name=game_name)
+            wishlist, _ = WishList.objects.get_or_create(user=request.user)
 
-        WishListItem.objects.get_or_create(wishlist=wishlist, game=jogo)
+            if not WishListItem.objects.filter(wishlist=wishlist, game=jogo).exists():
+                WishListItem.objects.create(wishlist=wishlist, game=jogo)
+
+            return redirect("paginaJogo", nome=game_name)
 
     return redirect("paginaJogo", nome=game_name)
 
+@csrf_exempt
 @csrf_exempt
 def removerWishlist(request):
     if request.method == "POST" and request.user.is_authenticated:
         game_id = request.POST.get("game_id")
         jogo = get_object_or_404(Jogos, id=game_id)
+        
         wishlist = WishList.objects.filter(user=request.user).first()
+        
         if wishlist:
-            wishlist.games.remove(jogo)
+            wish_item = WishListItem.objects.filter(wishlist=wishlist, game=jogo).first()
+            if wish_item:
+                wish_item.delete()
 
     return redirect('wishList')
