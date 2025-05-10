@@ -9,7 +9,7 @@
     <div class="maisjogados-container">
         <h1>Top 20 Jogos Mais Jogados do Mês</h1>
         <div class="main-content">
-            <form method="get" action="{% url 'maisJogadosHist' %}">
+            <form method="get" action="{% url 'maisJogados' %}">
                 <div class="filter-options">
                     <label>
                         <input class="filterMais" type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
