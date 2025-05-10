@@ -283,39 +283,65 @@ footer .container {
 
 .maisjogados-container {
     width: 100%;
-    max-width: 1280px;
-    margin: 80px auto 20px;
-    padding: 0 20px;
-    overflow: visible;
+    max-width: 2000px; /* Aumentado de 1800px para 2000px */
+    margin: 40px auto;
+    padding: 0 60px; /* Aumentado padding horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.page-title {
-    color: #ffffff;
-    font-size: 32px;
-    text-align: center;
-    margin: 20px 0 40px 0;
-    font-family: "Bungee", cursive;
-}
-
-.games-grid {
+.maisjogados-container .games-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 40px;
-}
-
-.game-card {
-    background: #1b2838;
-    border: 2px solid #66c0f4;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.2s;
-}
-
-.game-card img {
+    gap: 70px; /* Aumentado para 70px */
     width: 100%;
-    height: 180px;
+    max-width: 1900px; /* Aumentado para 1900px */
+    padding: 0;
+    margin: 0 auto;
+}
+
+.maisjogados-container .game-card {
+    min-width: 550px; /* Aumentado para 550px */
+    min-height: 450px; /* Aumentado para 450px */
+    margin: 0 auto;
+}
+
+.maisjogados-container .game-card img {
+    width: 100%;
+    height: 350px; /* Aumentado para 350px */
     object-fit: cover;
+}
+
+.maisjogados-container .filter-options {
+    margin-bottom: 30px;
+    background: rgba(27, 40, 56, 0.9);
+    padding: 20px 35px; /* Aumentado padding */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: -100px;
+    min-width: 220px; /* Aumentado largura mínima do filtro */
+    width: fit-content;
+    margin-top: -3px;
+}
+
+.filter-options label {
+    font-size: 18px; /* Aumentado tamanho da fonte */
+    padding: 12px; /* Aumentado padding */
+}
+
+.maisjogados-container .game-info {
+    padding: 25px; /* Aumentado padding */
+}
+
+.maisjogados-container h3 {
+    font-size: 24px; /* Aumentado tamanho da fonte */
+    margin-bottom: 20px;
+}
+
+.maisjogados-container p {
+    font-size: 20px; /* Aumentado tamanho da fonte */
+    margin: 10px 0;
 }
 
 .game-info {
@@ -470,32 +496,31 @@ a {
 
 .maisJogadosHist-container {
     max-width: 1280px;
-    margin: 40px auto 0;  /* Alterado para centralizar e manter margem superior */
-    padding: 0 20px;      /* Adicionado padding horizontal */
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .maisJogadosHist-title {
     color: white;
     font-size: 32px;
     margin-bottom: 30px;
-    text-align: center;    /* Centralizado o título */
-    margin-left: 0;        /* Removido margin-left */
+    text-align: center;
     font-family: 'Roboto', sans-serif;
+    width: 100%;
+    margin-left: 280px; /* Ajuste para compensar o espaço do filtro */
 }
 
-.main-content {
+.maisJogadosHist-container .main-content {
     display: flex;
-    gap: 40px;           /* Reduzido o gap */
-    margin-top: 40px;
-    justify-content: center; /* Centraliza o conteúdo */
+    gap: 30px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .filter-options {
-    width: fit-content;
-    min-width: 200px;
-    padding: 20px;
-    margin-left: 0;      /* Removido margin-left */
-    margin-top: 20px;
+    width: 250px;
+    padding: 25px;
     background: rgba(27, 40, 56, 0.9);
     border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -686,16 +711,117 @@ a {
     transition: transform 0.3s ease;
 }
 
+/* Estilos específicos para maisjogados */
+.maisjogados-container {
+    width: 100%;
+    max-width: 2000px;
+    margin: 40px auto;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .maisjogados-container .games-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;  
-    padding: 0 60px; 
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    margin: 0 auto;
 }
 
 .maisjogados-container .game-card {
-    min-width: 400px;  
+    min-width: 350px;
+    min-height: 300px;
+    margin: 0 auto;
+    background: rgba(27, 40, 56, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease forwards;
+    position: relative;
+}
+
+.maisjogados-container .filter-options {
+    margin-bottom: 30px;
+    background: rgba(27, 40, 56, 0.9);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: -100px; /* Adicionado para mover mais para a esquerda */
+}
+
+.maisJogadosHist-container .games-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.maisJogadosHist-container .game-cardJogados {
+    min-width: 320px;
+    min-height: 250px;
+    background: rgba(27, 40, 56, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease forwards;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-origin: center;
+}
+
+.game-cardJogados a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.game-cardJogados .game-info h3,
+.game-cardJogados .game-info p {
+    color: #ffffff;
+}
+
+.game-cardJogados a:hover {
+    color: inherit;
+}
+.game-cardJogados:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: #2b747a;
+    box-shadow: 0 0 25px rgba(102, 192, 244, 0.4);
+    z-index: 2;
+    background: rgba(27, 40, 56, 0.9);
+}
+
+.game-cardJogados:hover img {
+    transform: scale(1.05);
+}
+
+.game-cardJogados img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.maisjogados-container .games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;  
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.maisjogados-container .game-card {
+    min-width: 350px;  
     min-height: 300px; 
+    margin: 0 auto;
 }
 
 .maisjogados-container .game-card img {

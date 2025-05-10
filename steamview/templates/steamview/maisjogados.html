@@ -12,12 +12,12 @@
             <form method="get" action="{% url 'maisJogados' %}">
                 <div class="filter-options">
                     <label>
-                        <input class="filterMais" type="radio" name="filter" value="mais-jogados" {% if filtro == 'mais-jogados' %}checked{% endif %} onchange="this.form.submit()">
-                        Mais Jogados
+                        <input class="normalOrderButton" id="normalOrderButton" type="radio" name="filter" value="mais-jogados" >
+                    Mais Jogados
                     </label><br>
                     <label>
-                        <input class="filterMenos" type="radio" name="filter" value="menos-jogados" {% if filtro == 'menos-jogados' %}checked{% endif %} onchange="this.form.submit()">
-                        Menos Jogados
+                        <input class="invertOrderButton" id="invertOrderButton" type="radio" name="filter" value="menos-jogados">
+                    Menos Jogados
                     </label>
                 </div>
             </form>
