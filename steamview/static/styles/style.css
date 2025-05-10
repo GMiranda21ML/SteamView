@@ -76,15 +76,58 @@ header nav li a:hover {
     color: #66c0f4;
 }
 
-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Ajustes do header */
+.steam-header {
+    padding: 25px 0;  /* Aumentado de 16px */
 }
 
+.steam-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.steam-header h1 {
+    margin-right: 60px;  /* Aumentado de 30px para criar mais espaço */
+    font-size: 32px;
+    color: #ecf0f1;
+    font-weight: bold;
+    margin-left: -80px;  /* Ajustado para manter alinhamento */
+}
+
+.steam-header nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.steam-header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;       /* Aumentado para melhor distribuição */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -30px;  /* Ajustado para alinhar com o novo espaçamento */
+}
+
+.steam-header nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+/* Remove estilos duplicados */
 header nav li {
     display: inline;
-    margin-left: 16px;
+    margin: 0;
     font-size: 18px;
 }
 
