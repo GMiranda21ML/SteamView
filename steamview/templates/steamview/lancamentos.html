@@ -3,7 +3,7 @@
 {% load socialaccount %}
 
 {% block content %}
-<main>
+<main class="lancamentos-container">
     <h1 class="page-title">Lançamentos Recentes</h1>
 
     <div class="games-grid">
@@ -14,15 +14,21 @@
                     <div class="game-info">
                         <h3>{{ jogo.nome }}</h3>
                         <div class="game-details">
-                            <p class="game-rating">Nota: {{ jogo.rating }}</p>
-                            <p class="game-release-date">Lançamento: {{ jogo.lancamento|date:"d/m/Y" }}</p>
-                            <p class="game-price">{{ jogo.preco }}</p>
+                            <p class="game-rating">
+                                Nota: {{ jogo.rating }}
+                            </p>
+                            <p class="game-price">
+                                {{ jogo.preco }}
+                            </p>
+                            <p class="game-release-date">
+                                Lançado em: {{ jogo.lancamento|date:"d/m/Y" }}
+                            </p>
                         </div>
                     </div>
                 </a>
             </div>
         {% empty %}
-            <p class="no-games">Nenhum jogo encontrado.</p>
+            <p>Nenhum jogo encontrado.</p>
         {% endfor %}
     </div>
 </main>
