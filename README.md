@@ -286,6 +286,138 @@ Atualizamos o documento onde é detalhado como foram divididas as tarefas de des
 
 </details>
 
+---
+
+<details>
+<summary>📝 QUARTA ENTREGA</summary>
+
+O objetivo desta terceira sprint foi expandir o SteamView, trazendo novas funcionalidades e melhorias gerais no sistema.
+
+
+# Histórias implementadas:
+
+# 🧩 Histórias de Usuário
+
+Este documento descreve funcionalidades esperadas para o sistema SteamView, baseadas em histórias de usuário.
+
+---
+
+## 📝 História 3: Wishlist
+
+**Como** um usuário normal do site,  
+**Quero** poder adicionar, remover e visualizar jogos na minha wishlist,  
+**Para** que eu possa acompanhar os jogos que me interessam.
+
+### 📌 Cenários
+
+#### ✅ Cenário 1: Adicionar um jogo à wishlist
+
+**Dado que** o usuário está logado e deseja adicionar um jogo à wishlist,  
+**Quando** ele acessa a página de algum jogo e escolhe a opção “Adicionar à wishlist”,  
+**Então** o jogo é adicionado à wishlist.
+
+---
+
+#### 👀 Cenário 2: Visualizar os jogos na wishlist
+
+**Dado que** o usuário está logado e deseja ver os jogos que possui na wishlist,  
+**Quando** ele vai na aba *Wishlist*,  
+**Então** são exibidos os jogos que ele adicionou.
+
+---
+
+#### 🗑️ Cenário 3: Remover um jogo da wishlist
+
+**Dado que** o usuário está logado e deseja remover um jogo da wishlist,  
+**Quando** ele vai na aba *Wishlist* e clica em “Remover” em um jogo,  
+**Então** o jogo é removido da wishlist.
+
+---
+
+#### ℹ️ Cenário 4: Visualizar wishlist vazia
+
+**Dado que** o usuário está logado e deseja ver os jogos na wishlist,  
+**Quando** ele vai na aba *Wishlist* e não há jogos adicionados,  
+**Então** é exibida uma mensagem informando que a wishlist ainda está vazia.
+
+---
+
+## 🎲 História 8: Jogo Aleatório
+
+**Como** um usuário normal do site,  
+**Quero** que o site escolha um jogo aleatoriamente por mim,  
+**Para** que eu descubra jogos novos de forma divertida.
+
+### 📌 Cenário
+
+#### 🔀 Cenário Único: Seleção aleatória de jogo
+
+**Dado que** o usuário está logado e deseja que o site escolha um jogo aleatoriamente por ele,  
+**Quando** ele vai na aba *Random* e clica em “Pegue um jogo aleatório”,  
+**Então** é exibido um jogo escolhido aleatoriamente.
+
+---
+
+# Jira
+
+
+Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos mais 3 histórias.Para acessá-lo, [clique aqui]().
+
+BackLog:
+
+![Jira](img/.png)
+
+Board:
+
+![Jira](img/.png)
+
+---
+
+# Screencast
+Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades, o processo de deploy, testes no Cypress, CI/CD e também o protótipo atualizado no Figma.
+
+<div align="center">
+    <a href="">
+        <img src="https://img.shields.io/badge/Deploy-228B22?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Cypress-6E40C9?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/CI/CD-1E90FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
+    </a>
+</div>
+
+---
+
+# Bugtracker
+
+Criamos uma nova seção de bug tracker para controle das falhas e melhorias aplicadas na nova sprint.
+
+
+Open:
+
+![Open](img/Open2.png)
+
+
+Closed:
+
+![Closed](img/Closed2.png)
+
+
+---
+
+# Relatório de Programação
+
+Atualizamos o documento onde é detalhado como foram divididas as tarefas de desenvolvimento nesta entrega.
+
+[Link para o relatório](https://docs.google.com/document/d/1kGRfZ-oWasivb5I1HcR4BfNv_ETWxWy5BHzKlodHNbM/edit?usp=sharing)
+
+---
+
 ## 🫂 Integrantes
 | Matricula  | Nome                                  | Email da school    |
 | ---------- | ------------------------------------- | ------------------ |
