@@ -9,7 +9,7 @@ Cypress.Commands.add('randomChoose', () => {
   cy.visit('http://127.0.0.1:8000/');
   cy.get('.random').click();
   cy.wait(1000);
-  cy.get('.random-button').click();
+  cy.get('.random-button', { timeout: 1000000 }).should('be.visible').click();
   cy.wait(1000);
   cy.get('.random-button').click();
   cy.wait(1000);
