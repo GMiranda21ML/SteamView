@@ -25,10 +25,7 @@ O SteamView é um software feito pelo framework Django, tem como objetivo ajudar
     <a href="https://www.figma.com/design/3nPg7kwxtVKxKwypslPQtB/SteamView?node-id=58-582&t=77d8WioUx6bMMnMa-1">
         <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
     </a>
-    <a href="https://youtu.be/1OVcVGjYgdY">
-        <img src="https://img.shields.io/badge/Screencast-FF0000?style=for-the-badge&logo=coursera&logoColor=white" alt="Screencast">
-    </a>
-    <a href="https://steamview.azurewebsites.net/">
+    <a href="https://steam-view.azurewebsites.net">
         <img src="https://img.shields.io/badge/Steamview-007BFF?style=for-the-badge&logo=firefox&logoColor=white" alt="Screencast">
     </a>
 </div>
@@ -97,7 +94,7 @@ O objetivo desta segunda sprint é começar a fazer o projeto de verdade, implem
 # Jira
 
 
-Trouxemos uma atualização do backlog no Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos essas 3 histórias.Para acessá-lo, [clique aqui](https://steamview.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiNzkyMmY3OTcxZDQ0NDM2MWEwMjk5ZWQwYzZiOWU5OTEiLCJwIjoiaiJ9).
+Trouxemos uma atualização do backlog no Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos essas 3 histórias.Para acessá-lo, [clique aqui](https://steamviewfds.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiMjZiNDgyNDQxMGM4NGYzZGE2OWVmM2YyM2EyYjUwODYiLCJwIjoiaiJ9).
 
 BackLog:
 
@@ -109,7 +106,7 @@ Board:
 
 
 # Screencast
-Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui](https://youtu.be/1OVcVGjYgdY). Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, [clique aqui](https://steamview.azurewebsites.net/).
+Além disso, trouxemos, desta vez, um screencast para apresentar o nosso projeto - agora já desenvolvido em Django. Você pode acessá-lo [clicando aqui](https://youtu.be/1OVcVGjYgdY). Além disso, criamos um documento para relatar como foram divididas as tarefas entre o grupo. Para acessá-lo, [clique aqui](https://steam-view.azurewebsites.net).
 
 # Bugtracker
 Fizemos a criação de um bugtracker, onde podemos ver a correção de bugs e melhorias no Steam View.
@@ -342,6 +339,10 @@ Este documento descreve funcionalidades esperadas para o sistema SteamView, base
 
 ---
 
+Wishlist:
+
+![Open](img/Wishlist.png)
+
 ## 🎲 História 8: Jogo Aleatório
 
 **Como** um usuário normal do site,  
@@ -356,37 +357,46 @@ Este documento descreve funcionalidades esperadas para o sistema SteamView, base
 **Quando** ele vai na aba *Random* e clica em “Pegue um jogo aleatório”,  
 **Então** é exibido um jogo escolhido aleatoriamente.
 
+Random:
+
+![Open](img/Random1.png)
+
+![Open](img/Random2.png)
+
 ---
 
 # Jira
 
 
-Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos mais 3 histórias.Para acessá-lo, [clique aqui]().
+Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o andamento do projeto e organizar as demandas e histórias, onde implementamos mais 2 histórias.Para acessá-lo, [clique aqui](https://steamviewfds.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiMjZiNDgyNDQxMGM4NGYzZGE2OWVmM2YyM2EyYjUwODYiLCJwIjoiaiJ9).
 
 BackLog:
 
-![Jira](img/.png)
+![Jira](img/jiraquarta1.png)
 
 Board:
 
-![Jira](img/.png)
+![Jira](img/jiraquarta2.png)
 
+Arquivadas:
+
+![Jira](img/jiraquarta3.png)
 ---
 
 # Screencast
 Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades, o processo de deploy, testes no Cypress, CI/CD e também o protótipo atualizado no Figma.
 
 <div align="center">
-    <a href="">
+    <a href="https://youtu.be/dvkuvooATQU">
         <img src="https://img.shields.io/badge/Deploy-228B22?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy">
     </a>
-    <a href="">
+    <a href="https://youtu.be/kYpBDnYvRgE">
         <img src="https://img.shields.io/badge/Cypress-6E40C9?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
     </a>
-    <a href="">
+    <a href="https://youtu.be/lHP__vqpKBo">
         <img src="https://img.shields.io/badge/CI/CD-1E90FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD">
     </a>
-    <a href="">
+    <a href="https://youtu.be/DPz4at2zR2I">
         <img src="https://img.shields.io/badge/Figma-4B0082?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma">
     </a>
 </div>
@@ -400,12 +410,11 @@ Criamos uma nova seção de bug tracker para controle das falhas e melhorias apl
 
 Open:
 
-![Open](img/Open2.png)
-
+![Open](img/Openquarta.png)
 
 Closed:
 
-![Closed](img/Closed2.png)
+![Closed](img/closedquarta.png)
 
 
 ---
