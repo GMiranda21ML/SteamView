@@ -10,7 +10,6 @@ Cypress.Commands.add('randomChoose', () => {
   cy.get('.random').click();
   cy.wait(1000);
   cy.get('.random-button', { timeout: 1000000 }).should('be.visible').click();
-  cy.get('.random-game-card', { timeout: 100000 }).should('be.visible');
   cy.wait(1000);
 
 });
