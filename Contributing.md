@@ -28,7 +28,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 Abra seu terminal e navegue até o diretório onde deseja clonar o repositório. Em seguida, execute o comando abaixo:
 
-git clone https://github.com/GMiranda21ML/SteamView.git
+git clone https://github.com/eduaab/SteamView.git
 
 
 
@@ -44,6 +44,9 @@ cd SteamView
 #    3. Crie e Ative um Ambiente Virtual    *
 # *******************************************
 
+Caso não tenha, faça o download usando o comando:
+
+pip install virtualenv
 
 Para criar um ambiente virtual, execute o seguinte comando:
 
@@ -76,6 +79,10 @@ pip install -r requirements.txt
 
 Realize as migrações no banco usando:                                             (Note que em algums dispositivos é usado py como prefixo ao inves de python)
 
+python manage.py makemigrations
+
+E depois:
+
 python manage.py migrate
 
 # *******************************************
@@ -97,7 +104,7 @@ Recomendamos o uso do Visual Studio Code (VSCode) para desenvolver o projeto. Pa
 ```
 
 # Abra o VSCode.
-Clique em File > Open Folder... e selecione o diretório do projeto BookHeaded.
+Clique em File > Open Folder... e selecione o diretório do projeto SteamView.
 Certifique-se de que o ambiente virtual esteja ativado no terminal do VSCode.
 
 # Abra um Pull Request.
