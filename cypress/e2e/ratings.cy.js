@@ -31,11 +31,11 @@ describe('Mostrar as avaliações dos jogos', () => {
     cy.logar();  
   });
   
-  it('Visualizar as melhores notas/avaliações dos jogos', () => {
+  it('Cenario 1: Visualizar as melhores notas/avaliações dos jogos', () => {
     cy.visualizarMelhores();  
   });
   
-  it('Visualizar as piores notas/avaliações dos jogos', () => {
+  it('Cenario 2: Visualizar as piores notas/avaliações dos jogos', () => {
     cy.logar();  
     cy.visualizarPiores();  
   });

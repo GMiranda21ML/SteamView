@@ -1,15 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User
 from django.contrib import messages
 from bs4 import BeautifulSoup
-from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist
+from .models import Jogos, HistoricoPesquisa, MaisJogados, MaisJogadosHist, MenosJogadosHist, WishList, WishListItem
 from django.core.paginator import Paginator, EmptyPage
 from django.http import JsonResponse
 from django.core.cache import cache
 from datetime import datetime, timedelta
+import random
 import requests
 
 API_KEY = "2965d09ddf6e4c47ad963c0a15e4e7db"  
@@ -140,6 +141,9 @@ def paginaJogo(request, nome):
     game = buscarJogoPorNome(game_name)
 
     gameInfo = None
+    jogo_obj = None
+    ja_na_wishlist = False
+
     if game:
         game_id = game.get("id")
         game_details = buscarDetalhesDoJogo(game_id)
@@ -149,31 +153,38 @@ def paginaJogo(request, nome):
             descricao_html = game_details.get("description", "Descrição não disponível.")
             descricao_limpa = BeautifulSoup(descricao_html, "html.parser").get_text()
 
+            nome_jogo = game_details.get("name", "N/A")
+
             gameInfo = {
-                "name": game_details.get("name", "N/A"),
+                "name": nome_jogo,
                 "description": descricao_limpa,
                 "rating": game_details.get("rating", "Nota não disponível"),
                 "image_url": game_details.get("background_image", "Imagem não disponível"),
                 "price": preco
             }
 
-            if not Jogos.objects.filter(name = game_details.get("name", "N/A")).exists():
-                jogosBanco = Jogos(
-                    name = game_details.get("name", "N/A"),
-                    description = descricao_limpa,
-                    rating = game_details.get("rating", "Nota não disponível"),
-                    image = game_details.get("background_image", "Imagem não disponível"),
-                    price =  preco
-                )
+            jogo_obj, created = Jogos.objects.get_or_create(
+                name=nome_jogo,
+                defaults={
+                    'description': descricao_limpa,
+                    'rating': game_details.get("rating", "Nota não disponível"),
+                    'image': game_details.get("background_image", "Imagem não disponível"),
+                    'price': preco
+                }
+            )
 
-                jogosBanco.save()
+            wishlist, created = WishList.objects.get_or_create(user=request.user)
+
+            ja_na_wishlist = WishListItem.objects.filter(wishlist=wishlist, game=jogo_obj).exists()
 
     context = {
         "gameInfo": gameInfo,
         "nome": nome,
+        "ja_na_wishlist": ja_na_wishlist
     }
 
     return render(request, "steamview/paginaJogo.html", context)
+
 
 def remover_duplicatas():
     nomes_vistos = set()
@@ -373,4 +384,79 @@ def maisJogadosHist(request):
 
     jogos = jogos[:100]
 
-    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})    
+    return render(request, 'steamview/maisJogadosHist.html', {"jogos": jogos, "filtro": filtro})
+
+def verificarID():
+    while (True):
+        numeroAleatorio = random.randint(0, 10200)
+
+        try:
+            jogo = Jogos.objects.get(id=numeroAleatorio)
+            if float(jogo.rating) >= 2.0:
+                return numeroAleatorio
+        except Jogos.DoesNotExist:
+            pass
+
+
+def jogoAleatorio(request):
+    if request.method == 'POST':
+
+        novo_id = verificarID()
+
+        if novo_id is None:
+            return render(request, 'steamview/random.html')  
+
+        jogo = Jogos.objects.get(id=novo_id)
+
+        context = {"jogo": jogo}
+        return render(request, 'steamview/random.html', context)
+
+    return render(request, 'steamview/random.html', {})
+
+
+def wishList(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    wishlist = WishList.objects.filter(user=request.user).first()
+    wishlist_items = WishListItem.objects.filter(wishlist=wishlist).select_related('game').order_by('added_at') if wishlist else []
+
+    context = {
+        'wishlist_items': wishlist_items
+    }
+
+    return render(request, 'steamview/wishlist.html', context)
+
+
+@csrf_exempt
+def adicionarWishlist(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    if request.method == "POST":
+        game_name = request.POST.get("game_name")
+        if game_name:
+            jogo = get_object_or_404(Jogos, name=game_name)
+            wishlist, _ = WishList.objects.get_or_create(user=request.user)
+
+            if not WishListItem.objects.filter(wishlist=wishlist, game=jogo).exists():
+                WishListItem.objects.create(wishlist=wishlist, game=jogo)
+
+            return redirect("paginaJogo", nome=game_name)
+
+    return redirect("paginaJogo", nome=game_name)
+
+@csrf_exempt
+def removerWishlist(request):
+    if request.method == "POST" and request.user.is_authenticated:
+        game_id = request.POST.get("game_id")
+        jogo = get_object_or_404(Jogos, id=game_id)
+        
+        wishlist = WishList.objects.filter(user=request.user).first()
+        
+        if wishlist:
+            wish_item = WishListItem.objects.filter(wishlist=wishlist, game=jogo).first()
+            if wish_item:
+                wish_item.delete()
+
+    return redirect('wishList')

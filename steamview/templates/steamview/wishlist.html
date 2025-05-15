@@ -1,0 +1,40 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<main>
+    <div class="wishlist-container">
+        <h1 class="wishlist-title">Minha Lista de Desejos</h1>
+        <div class="wishlist-list">
+            {% if wishlist_items %}
+                {% for item in wishlist_items %}
+                <a href="{% url 'paginaJogo' nome=item.game.name %}">
+                    <div class="wishlist-item">
+                        <img src="{{ item.game.image }}" alt="{{ item.game.name }}" class="wishlist-game-image">
+                        <div class="wishlist-game-info">
+                            <h3>{{ item.game.name }}</h3>
+                            <p class="wishlist-price">{{ item.game.price }}</p>
+                        </div>
+                        <div class="wishlist-buttons">
+                            <form method="post" action="{% url 'removerWishlist' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="game_id" value="{{ item.game.id }}">
+                                <button type="submit" class="wishlist-remove">Remover</button>
+                            </form>
+                            <p class="wishlist-date">Adicionado em {{ item.added_at|date:"d/m/Y H:i" }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p>Você ainda não adicionou nenhum jogo à sua lista de desejos.</p>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+<link rel="stylesheet" href="{% static 'styles/wishlist.css' %}">
+{% endblock %}

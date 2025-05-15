@@ -1,0 +1,33 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<main class="random-game-container">
+    <div class="random-button-container">
+        <form method="post">
+            {% csrf_token %}
+            <button class="random-button" type="submit">
+                PEGUE UM JOGO ALEATÓRIO
+            </button>
+        </form>
+    </div>
+
+    {% if jogo %}
+    <div class="random-game-card">
+        <a href="{% url 'paginaJogo' nome=jogo.name %}">
+            <div class="ranking-number">#1</div>
+            <img src="{{ jogo.image }}" alt="{{ jogo.name }}">
+            <div class="random-game-info">
+                <h3 class="random-game-title">{{ jogo.name }}</h3>
+                <div class="random-game-rating">
+                    <span>Nota:</span>
+                    <span class="rating-score">{{ jogo.rating }}</span>
+                </div>
+                <p class="random-game-price">{{ jogo.price }}</p>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
