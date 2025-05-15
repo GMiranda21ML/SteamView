@@ -288,7 +288,7 @@ Atualizamos o documento onde é detalhado como foram divididas as tarefas de des
 <details>
 <summary>📝 QUARTA ENTREGA</summary>
 
-O objetivo desta terceira sprint foi expandir o SteamView, trazendo novas funcionalidades e melhorias gerais no sistema.
+"O objetivo desta terceira sprint foi expandir o SteamView, trazendo novas funcionalidades e melhorias gerais ao sistema. Além disso, optamos por remover duas histórias — a de descontos e a de hardware — e adicionar duas novas: a de wishlist e a de conteúdo aleatório (random).
 
 
 # Histórias implementadas:
@@ -341,7 +341,7 @@ Este documento descreve funcionalidades esperadas para o sistema SteamView, base
 
 Wishlist:
 
-![Open](img/Wishlist.png)
+![Wishlist](img/Wishlist.png)
 
 ## 🎲 História 8: Jogo Aleatório
 
@@ -359,9 +359,9 @@ Wishlist:
 
 Random:
 
-![Open](img/Random1.png)
+![Random1](img/Random1.png)
 
-![Open](img/Random2.png)
+![Random2](img/Random2.png)
 
 ---
 
@@ -372,15 +372,15 @@ Trouxemos uma atualização do Jira, que é por onde conseguimos gerenciar o and
 
 BackLog:
 
-![Jira](img/jiraquarta1.png)
+![Backlog](img/jiraquarta1.png)
 
 Board:
 
-![Jira](img/jiraquarta2.png)
+![Board](img/jiraquarta2.png)
 
 Arquivadas:
 
-![Jira](img/jiraquarta3.png)
+![Arquivadas](img/jiraquarta3.png)
 ---
 
 # Screencast
