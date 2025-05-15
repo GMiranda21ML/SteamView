@@ -5,29 +5,61 @@
 {% block content %}
 <main class="random-game-container">
     <div class="random-button-container">
-        <form method="post">
-            {% csrf_token %}
-            <button class="random-button" type="submit">
-                PEGUE UM JOGO ALEATÓRIO
-            </button>
-        </form>
+        <button id="gerar-jogo" class="random-button" type="button">
+            PEGUE UM JOGO ALEATÓRIO
+        </button>
     </div>
 
-    {% if jogo %}
-    <div class="random-game-card">
-        <a href="{% url 'paginaJogo' nome=jogo.name %}">
-            <div class="ranking-number">#1</div>
-            <img src="{{ jogo.image }}" alt="{{ jogo.name }}">
-            <div class="random-game-info">
-                <h3 class="random-game-title">{{ jogo.name }}</h3>
-                <div class="random-game-rating">
-                    <span>Nota:</span>
-                    <span class="rating-score">{{ jogo.rating }}</span>
+    <div id="resultado-jogo" style="margin-top: 30px;">
+        {% if jogo %}
+        <div class="random-game-card">
+            <a href="{% url 'paginaJogo' nome=jogo.name %}">
+                <div class="ranking-number">#1</div>
+                <img src="{{ jogo.image }}" alt="{{ jogo.name }}">
+                <div class="random-game-info">
+                    <h3 class="random-game-title">{{ jogo.name }}</h3>
+                    <div class="random-game-rating">
+                        <span>Nota:</span>
+                        <span class="rating-score">{{ jogo.rating }}</span>
+                    </div>
+                    <p class="random-game-price">{{ jogo.price }}</p>
                 </div>
-                <p class="random-game-price">{{ jogo.price }}</p>
-            </div>
-        </a>
+            </a>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </main>
+
+<script>
+document.getElementById("gerar-jogo").addEventListener("click", function () {
+    fetch("/jogoAleatorioAPI/")
+        .then(response => response.json())
+        .then(jogo => {
+            if (jogo.error) {
+                document.getElementById("resultado-jogo").innerHTML = "<p>Nenhum jogo encontrado.</p>";
+                return;
+            }
+
+            document.getElementById("resultado-jogo").innerHTML = `
+                <div class="random-game-card">
+                    <a href="${jogo.url}">
+                        <div class="ranking-number">#1</div>
+                        <img src="${jogo.image}" alt="${jogo.name}">
+                        <div class="random-game-info">
+                            <h3 class="random-game-title">${jogo.name}</h3>
+                            <div class="random-game-rating">
+                                <span>Nota:</span>
+                                <span class="rating-score">${jogo.rating}</span>
+                            </div>
+                            <p class="random-game-price">${jogo.price}</p>
+                        </div>
+                    </a>
+                </div>
+            `;
+        })
+        .catch(err => {
+            document.getElementById("resultado-jogo").innerHTML = "<p>Erro ao buscar jogo.</p>";
+        });
+});
+</script>
 {% endblock %}

@@ -414,6 +414,23 @@ def jogoAleatorio(request):
     return render(request, 'steamview/random.html', {})
 
 
+def jogoAleatorioAPI(request):
+    if request.method == 'GET':
+        novo_id = verificarID()
+
+        if novo_id is None:
+            return JsonResponse({"error": "Nenhum jogo encontrado"}, status=404)
+
+        jogo = Jogos.objects.get(id=novo_id)
+
+        return JsonResponse({
+            "name": jogo.name,
+            "image": jogo.image,
+            "rating": jogo.rating,
+            "price": jogo.price,
+            "url": f"/jogo/{jogo.name.replace(' ', '%20')}/"
+        })
+
 def wishList(request):
     if not request.user.is_authenticated:
         return redirect("login")

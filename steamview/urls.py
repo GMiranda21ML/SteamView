@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from steamview.views import paginaJogo, searchBar, api_jogos, ratingSearchPage, lancamentos_recentes, maisJogados, maisJogadosHist, \
-    jogoAleatorio, wishList, adicionarWishlist, removerWishlist
+    jogoAleatorio, jogoAleatorioAPI, wishList, adicionarWishlist, removerWishlist
 
 urlpatterns = [
     path("", searchBar, name ="searchBar"),
@@ -11,6 +11,7 @@ urlpatterns = [
     path("maisjogados/", maisJogados, name="maisJogados"),
     path("maisJogadosHist/", maisJogadosHist, name="maisJogadosHist"),
     path("jogoAleatorio/", jogoAleatorio, name = "jogoAleatorio"),
+    path("jogoAleatorioAPI/", jogoAleatorioAPI, name = "jogoAleatorioAPI"),
     path("wishList/", wishList, name= "wishList"),
     path("wishlist/adicionar/", adicionarWishlist, name="adicionarWishlist"),
     path("wishlist/remover/", removerWishlist, name="removerWishlist"),
