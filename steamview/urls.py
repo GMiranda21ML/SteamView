@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from steamview.views import paginaJogo, searchBar, api_jogos, ratingSearchPage,lancamentos_recentes, maisJogados, maisJogadosHist, \
+from steamview.views import paginaJogo, searchBar, api_jogos, ratingSearchPage, lancamentos_recentes, maisJogados, maisJogadosHist, \
     jogoAleatorio, wishList, adicionarWishlist, removerWishlist
 
 urlpatterns = [

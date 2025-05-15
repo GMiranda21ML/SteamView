@@ -447,7 +447,6 @@ def adicionarWishlist(request):
     return redirect("paginaJogo", nome=game_name)
 
 @csrf_exempt
-@csrf_exempt
 def removerWishlist(request):
     if request.method == "POST" and request.user.is_authenticated:
         game_id = request.POST.get("game_id")
