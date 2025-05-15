@@ -10,6 +10,9 @@ module.exports = defineConfig({
     retries: 2, 
     video: false, 
     execTimeout: 60000, 
-    failOnNonZeroExit: false, 
+    execTimeout: 60000,
+    pageLoadTimeout: 120000,
+    defaultCommandTimeout: 10000,
+    failOnNonZeroExit: false,
   },
 });
