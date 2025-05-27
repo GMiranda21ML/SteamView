@@ -390,10 +390,10 @@ Nesta entrega, criamos um screencast apresentando todas as novas funcionalidades
     <a href="https://youtu.be/dvkuvooATQU">
         <img src="https://img.shields.io/badge/Deploy-228B22?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy">
     </a>
-    <a href="https://youtu.be/kYpBDnYvRgE">
+    <a href="https://youtu.be/17q64bXPpaU">
         <img src="https://img.shields.io/badge/Cypress-6E40C9?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
     </a>
-    <a href="https://youtu.be/lHP__vqpKBo">
+    <a href="https://youtu.be/F3JNfzYbGrY">
         <img src="https://img.shields.io/badge/CI/CD-1E90FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD">
     </a>
     <a href="https://youtu.be/DPz4at2zR2I">
